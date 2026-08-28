@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Хаан Банк · Гүйлгээ боловсруулалт</title>
+    <!-- Font Awesome 6 pour icônes pro -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background: #eef3f0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+        }
+
+        .card {
+            max-width: 880px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 48px;
+            box-shadow: 0 30px 56px -16px rgba(0, 40, 20, 0.25);
+            padding: 36px 44px 44px;
+            border: 1px solid #d6e8de;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        /* ===== DECORATIVE TOP BAR ===== */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #1a7a4a, #2e9e6b, #1a7a4a);
+            background-size: 200% 100%;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 0%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        /* ===== HEADER ===== */
+        .bank-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding-bottom: 18px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e8f2ec;
+        }
+
+        .bank-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .bank-logo {
+            background: #1a7a4a;
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            box-shadow: 0 4px 12px rgba(26, 122, 74, 0.25);
+        }
+
+        .bank-name {
+            font-size: 26px;
+            font-weight: 700;
+            color: #0a4028;
+            letter-spacing: -0.3px;
+        }
+
+        .bank-name-sub {
+            font-size: 15px;
+            font-weight: 500;
+            color: #2a6b48;
+            margin-left: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-status {
+            background: #b8860b;
+            color: white;
+            font-weight: 600;
+            font-size: 13px;
+            padding: 8px 24px;
+            border-radius: 60px;
+            border: 1px solid #8a6a0a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: pulse-badge 2s infinite;
+            box-shadow: 0 2px 8px rgba(184, 134, 11, 0.2);
+        }
+
+        .badge-status i {
+            font-size: 14px;
+        }
+
+        @keyframes pulse-badge {
+            0%, 100% { opacity: 0.85; transform: scale(1); }
+            50% { opacity: 1; background: #d4a017; transform: scale(1.02); }
+        }
+
+        /* ===== TRANSACTION HEADER ===== */
+        .transaction-header {
+            background: #f2faf6;
+            border-radius: 60px;
+            padding: 12px 24px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            border: 1px solid #d0e6da;
+        }
+
+        .transaction-header .label {
+            font-weight: 600;
+            color: #0d4a2e;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .transaction-header .label i {
+            color: #1a7a4a;
+            font-size: 16px;
+        }
+
+        .transaction-header .value {
+            font-weight: 600;
+            color: #0a4028;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* ===== TITLE & AMOUNT ===== */
+        .title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+
+        .title-row h2 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #0a4028;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .title-row h2 i {
+            color: #1a7a4a;
+            font-size: 24px;
+        }
+
+        .amount-main {
+            font-size: 38px;
+            font-weight: 700;
+            color: #0a462b;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .amount-main i {
+            font-size: 28px;
+            color: #b8860b;
+        }
+
+        /* ===== BANNER FINALISATION ===== */
+        .finalisation-banner {
+            background: linear-gradient(135deg, #fbf3e0 0%, #f7e9c3 100%);
+            border-radius: 60px;
+            padding: 22px 32px;
+            margin: 14px 0 24px;
+            border: 2px solid #e6c98a;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 16px rgba(184, 134, 11, 0.12);
+        }
+
+        .finalisation-banner .icon-big {
+            font-size: 44px;
+            color: #b8860b;
+            width: 60px;
+            text-align: center;
+        }
+
+        .finalisation-banner .title-final {
+            font-size: 26px;
+            font-weight: 800;
+            color: #7a5d1a;
+        }
+
+        .finalisation-banner .sub-final {
+            font-size: 16px;
+            color: #6a4f1a;
+            font-weight: 500;
+            width: 100%;
+            margin-top: 2px;
+        }
+
+        /* ===== PROGRESS : 100% ===== */
+        .progress-block {
+            background: #f4fbf7;
+            border-radius: 60px;
+            padding: 10px 20px 10px 28px;
+            margin: 16px 0 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            border: 1px solid #c8e0d4;
+        }
+
+        .progress-label {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-weight: 500;
+            color: #0f4a2e;
+            font-size: 15px;
+        }
+
+        .progress-label .step-badge {
+            background: #cfe6db;
+            padding: 4px 18px;
+            border-radius: 40px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #0a3d25;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .progress-percent {
+            font-weight: 700;
+            font-size: 24px;
+            color: #0a462b;
+            background: #ddf0e6;
+            padding: 4px 28px;
+            border-radius: 60px;
+            border: 1px solid #b6dac8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .progress-percent i {
+            color: #1a7a4a;
+            font-size: 18px;
+        }
+
+        /* ===== STEPS ===== */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 20px;
+            background: #f6fcf8;
+            padding: 22px 26px;
+            border-radius: 28px;
+            margin-bottom: 28px;
+            border: 1px solid #d4e8dd;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 14px;
+            font-weight: 450;
+            color: #1a4f34;
+            padding: 4px 0;
+        }
+
+        .step-item .icon-circle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #1a7a4a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: white;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(26, 122, 74, 0.2);
+        }
+
+        .step-item .step-text {
+            line-height: 1.3;
+        }
+        .step-item .step-desc {
+            font-size: 12px;
+            opacity: 0.7;
+            font-weight: 400;
+        }
+
+        /* étape finalisation avec spinner */
+        .step-item .icon-circle.spinner-step {
+            background: #b8860b;
+            font-size: 0;
+            border: 4px solid #f7e6b0;
+            border-top: 4px solid #ffffff;
+            animation: spin 0.9s linear infinite;
+            box-shadow: 0 2px 8px rgba(184, 134, 11, 0.25);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ===== RECIPIENT TABLE ===== */
+        .recipient-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0 24px;
+            background: #f8fcf9;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid #d2e6db;
+        }
+
+        .recipient-table td {
+            padding: 14px 22px;
+            border-bottom: 1px solid #e2f0e8;
+            font-size: 15px;
+        }
+
+        .recipient-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .recipient-table td:first-child {
+            font-weight: 500;
+            color: #0f462d;
+            background: #ecf8f2;
+            width: 160px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .recipient-table td:first-child i {
+            color: #1a7a4a;
+            font-size: 16px;
+            width: 20px;
+        }
+
+        .recipient-table td:last-child {
+            font-weight: 500;
+            color: #0a3d26;
+        }
+
+        /* ===== MESSAGE FINALISATION ===== */
+        .finalisation-message {
+            background: #fefcf3;
+            border-radius: 28px;
+            padding: 24px 28px;
+            margin: 22px 0 26px;
+            border: 2px solid #e6d59a;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(184, 134, 11, 0.08);
+        }
+
+        .finalisation-message .emoji {
+            font-size: 42px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .finalisation-message .title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #7a5d1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .finalisation-message .desc {
+            font-size: 16px;
+            color: #5a4a1a;
+            margin-top: 6px;
+            line-height: 1.6;
+        }
+
+        .finalisation-message .highlight {
+            font-weight: 600;
+            color: #8a6a0a;
+            background: #f7edc3;
+            padding: 6px 24px;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 12px;
+            border: 1px solid #dbb85a;
+        }
+
+        .finalisation-message .highlight i {
+            font-size: 18px;
+        }
+
+        /* ===== VERIFICATION ===== */
+        .verify-instruction {
+            background: #eaf7f0;
+            border-radius: 24px;
+            padding: 18px 24px;
+            margin: 18px 0 22px;
+            border: 1px solid #bddacb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .verify-instruction .icon {
+            font-size: 28px;
+            color: #1a7a4a;
+        }
+
+        .verify-instruction .text {
+            font-size: 15px;
+            color: #0d4a2e;
+            font-weight: 500;
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .verify-instruction .text i {
+            color: #1a7a4a;
+            margin-right: 6px;
+        }
+
+        .verify-instruction .timer {
+            font-weight: 700;
+            font-size: 20px;
+            color: #0a462b;
+            background: #ddf0e6;
+            padding: 6px 24px;
+            border-radius: 40px;
+            border: 1px solid #b6dac8;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .verify-instruction .timer .mini-spinner {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 3px solid #b6dac8;
+            border-top: 3px solid #1a7a4a;
+            animation: spin 0.8s linear infinite;
+            display: inline-block;
+        }
+
+        /* ===== REFERENCE ===== */
+        .ref-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            background: #edf9f2;
+            padding: 16px 24px;
+            border-radius: 60px;
+            margin: 20px 0 14px;
+            border: 1px solid #cde4d8;
+        }
+
+        .ref-label {
+            font-weight: 500;
+            color: #0f462d;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ref-label i {
+            color: #1a7a4a;
+        }
+
+        .ref-code {
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            color: #0a3d26;
+            font-family: 'Courier New', monospace;
+        }
+
+        .date-line {
+            display: flex;
+            justify-content: flex-end;
+            font-size: 15px;
+            color: #1f5c3d;
+            border-top: 1px dashed #c8dfd2;
+            padding-top: 16px;
+            margin-top: 10px;
+            font-weight: 450;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .date-line i {
+            color: #1a7a4a;
+        }
+
+        .protocol-note {
+            font-size: 14px;
+            color: #1a5c3b;
+            background: #eaf7f0;
+            padding: 10px 20px;
+            border-radius: 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+            border: 1px solid #bddacb;
+        }
+
+        .protocol-note i {
+            color: #1a7a4a;
+        }
+
+        .flex-center {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* ===== NO FEE BADGE ===== */
+        .no-fee-badge {
+            background: #f0f9f0;
+            border-radius: 30px;
+            padding: 10px 24px;
+            margin: 6px 0 22px;
+            border: 1px solid #a8d4a8;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .no-fee-badge i {
+            font-size: 22px;
+            color: #1a7a4a;
+        }
+
+        .no-fee-badge span {
+            font-weight: 500;
+            color: #1e6b3a;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 640px) {
+            .card {
+                padding: 20px 16px;
+                border-radius: 32px;
+            }
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+                padding: 16px;
+            }
+            .title-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+            .amount-main {
+                font-size: 28px;
+            }
+            .progress-block {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+                padding: 14px 18px;
+            }
+            .progress-percent {
+                align-self: flex-start;
+            }
+            .recipient-table td:first-child {
+                width: auto;
+            }
+            .ref-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+            }
+            .bank-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .transaction-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+            }
+            .finalisation-banner {
+                padding: 16px 20px;
+            }
+            .finalisation-banner .title-final {
+                font-size: 20px;
+            }
+            .verify-instruction {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .bank-logo {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+            .bank-name {
+                font-size: 20px;
+            }
+            .badge-status {
+                font-size: 11px;
+                padding: 6px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card" id="app">
+        <!-- ===== HEADER ===== -->
+        <div class="bank-header">
+            <div class="bank-brand">
+                <div class="bank-logo">
+                    <i class="fas fa-university"></i>
+                </div>
+                <div>
+                    <span class="bank-name">Хаан Банк</span>
+                    <span class="bank-name-sub">KHAN BANK</span>
+                </div>
+            </div>
+            <div class="badge-status">
+                <i class="fas fa-spinner fa-pulse"></i>
+                ЭЦСИЙН ШАТ
+            </div>
+        </div>
+
+        <!-- ===== TRANSACTION HEADER ===== -->
+        <div class="transaction-header">
+            <span class="label">
+                <i class="fas fa-exchange-alt"></i> Транзакц
+            </span>
+            <span class="value">
+                <strong>Транзакц Хаан Банкнаас</strong> · TXN-7V290SZ00D
+                <i class="fas fa-spinner fa-pulse" style="color: #1a7a4a;"></i>
+            </span>
+        </div>
+
+        <!-- ===== TITLE & AMOUNT ===== -->
+        <div class="title-row">
+            <h2>
+                <i class="fas fa-check-circle" style="color: #b8860b;"></i>
+                Гүйлгээний эцсийн баталгаажуулалт
+            </h2>
+            <span class="amount-main">
+                <i class="fas fa-wallet"></i> 110,000,000.00 ₮
+            </span>
+        </div>
+
+        <!-- ===== BANNER FINALISATION ===== -->
+        <div class="finalisation-banner">
+            <div class="icon-big">
+                <i class="fas fa-hourglass-half"></i>
+            </div>
+            <div>
+                <div class="title-final">Эцсийн шатандаа явж байна</div>
+                <div class="sub-final">
+                    <i class="fas fa-arrow-right" style="color: #b8860b;"></i>
+                    Гүйлгээний эцсийн баталгаажуулалт хийгдэж байна. Та түр хүлээнэ үү.
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== PROGRESS : 100% ===== -->
+        <div class="progress-block">
+            <div class="progress-label">
+                <span class="step-badge">
+                    <i class="fas fa-list-check"></i> БАТАЛГААЖУУЛАЛТЫН ЯВЦ
+                </span>
+                <span>4 / 4 алхам</span>
+            </div>
+            <div class="progress-percent">
+                <i class="fas fa-check-circle"></i> 100%
+            </div>
+        </div>
+
+        <!-- ===== STEPS ===== -->
+        <div class="steps-grid">
+            <div class="step-item">
+                <div class="icon-circle">
+                    <i class="fas fa-check"></i>
+                </div>
+                <div class="step-text">
+                    <strong>Хүсэлт хүлээн авсан</strong>
+                    <div class="step-desc">Гүйлгээний мэдээлэл баталгаажсан</div>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="icon-circle">
+                    <i class="fas fa-check"></i>
+                </div>
+                <div class="step-text">
+                    <strong>Данс шалгасан</strong>
+                    <div class="step-desc">Үлдэгдэл болон лимит хангалттай</div>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="icon-circle">
+                    <i class="fas fa-check"></i>
+                </div>
+                <div class="step-text">
+                    <strong>Мөнгө шилжүүлсэн</strong>
+                    <div class="step-desc">Банк хоорондын системд амжилттай дамжуулагдлаа</div>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="icon-circle spinner-step"></div>
+                <div class="step-text">
+                    <strong>Эцсийн баталгаажуулалт</strong>
+                    <div class="step-desc">
+                        <i class="fas fa-spinner fa-pulse"></i> Гүйлгээ боловсруулалтын төгсгөл · үргэлжилж байна
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== RECIPIENT INFO ===== -->
+        <h3 style="font-weight: 500; font-size: 17px; color: #0d4a2e; margin: 8px 0 2px; display: flex; align-items: center; gap: 10px;">
+            <i class="fas fa-user-circle" style="color: #1a7a4a; font-size: 22px;"></i>
+            ХҮЛЭЭН АВАГЧИЙН МЭДЭЭЛЭЛ
+        </h3>
+        <table class="recipient-table">
+            <tr>
+                <td><i class="fas fa-hashtag"></i> Дансны дугаар</td>
+                <td>MN280005005119292357</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-user"></i> Нэр</td>
+                <td>Батчулуун Даваагэрэл</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-university"></i> Банк</td>
+                <td>Хаан Банк</td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-coins"></i> Дүн</td>
+                <td>110,000,000.00 ₮</td>
+            </tr>
+        </table>
+
+        <!-- ===== NO FEE ===== -->
+        <div class="no-fee-badge">
+            <i class="fas fa-circle-check"></i>
+            <span>Хураамжгүй · Засвар үйлчилгээний хураамж тооцогдохгүй</span>
+        </div>
+
+        <!-- ===== MESSAGE FINALISATION ===== -->
+        <div class="finalisation-message">
+            <div class="emoji">
+                <i class="fas fa-hourglass-start" style="color: #b8860b;"></i>
+            </div>
+            <div class="title">
+                <i class="fas fa-spinner fa-pulse" style="color: #b8860b;"></i>
+                Эцсийн баталгаажуулалт хийгдэж байна
+            </div>
+            <div class="desc">
+                Таны гүйлгээ <strong>110,000,000.00 ₮</strong> эцсийн шатандаа явж байна.
+                Бид таныг түр хүлээхийг хүсье. Баталгаажуулалт богино хугацаанд дуусна.
+            </div>
+            <div class="highlight">
+                <i class="fas fa-spinner fa-pulse"></i>
+                Та түр хүлээнэ үү · Эцсийн баталгаажуулалт үргэлжилж байна
+            </div>
+        </div>
+
+        <!-- ===== VERIFICATION ===== -->
+        <div class="verify-instruction">
+            <div class="icon">
+                <i class="fas fa-shield-halved"></i>
+            </div>
+            <div class="text">
+                <i class="fas fa-arrow-right"></i>
+                <strong>Эцсийн алхам:</strong> Та 15 минутын дараа хүлээн авагчийн дансаа шалгана уу.
+                Мөнгө бүрэн хүрсэн эсэхийг баталгаажуулна уу.
+            </div>
+            <div class="timer">
+                <span class="mini-spinner"></span>
+                <i class="fas fa-clock"></i> 15 минут
+            </div>
+        </div>
+
+        <!-- ===== REFERENCE ===== -->
+        <div class="ref-row">
+            <span class="ref-label">
+                <i class="fas fa-barcode"></i> ЛАВЛАХ ДУГААР
+            </span>
+            <span class="ref-code">TXN-7V290SZ00D</span>
+        </div>
+
+        <!-- ===== DATE ===== -->
+        <div class="date-line">
+            <i class="fas fa-calendar-day"></i>
+            <span>Огноо: <strong id="currentDate">2026-08-28</strong></span>
+        </div>
+        <div style="display: flex; justify-content: flex-end; margin-top: 6px;">
+            <span class="protocol-note">
+                <i class="fas fa-lock"></i>
+                Энэхүү гүйлгээ нь банкны нэмэлт протоколоор хамгаалагдсан.
+            </span>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // Mettre à jour la date automatiquement
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            document.getElementById('currentDate').textContent = `${year}-${month}-${day}`;
+
+            // Simulation de finalisation (pour l'effet visuel)
+            console.log('🔄 Finalisation en cours...');
+
+            // On peut ajouter un petit effet de pulse sur le spinner
+            const spinners = document.querySelectorAll('.fa-spinner');
+            spinners.forEach(sp => {
+                // déjà animé par fa-pulse
+            });
+
+            // Simuler un délai de finalisation (juste pour l'effet)
+            // Rien de plus, tout est statique car la finalisation est déjà en cours.
+        })();
+    </script>
+</body>
+</html>
