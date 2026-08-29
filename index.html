@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Хаан Банк · Кредит хийгдэж байна</title>
+    <title>Хаан Банк · Гүйлгээний кредит</title>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -36,7 +36,6 @@
             transition: all 0.2s ease;
         }
 
-        /* ===== DECORATIVE TOP BAR ===== */
         .card::before {
             content: '';
             position: absolute;
@@ -48,13 +47,22 @@
             background-size: 200% 100%;
             animation: shimmer 3s ease-in-out infinite;
         }
+
         @keyframes shimmer {
-            0% { background-position: 0% 0%; }
+            0%, 100% { background-position: 0% 0%; }
             50% { background-position: 100% 0%; }
-            100% { background-position: 0% 0%; }
         }
 
-        /* ===== HEADER ===== */
+        @keyframes pulse-badge {
+            0%, 100% { opacity: 0.85; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.02); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         .bank-header {
             display: flex;
             align-items: center;
@@ -120,12 +128,6 @@
             font-size: 14px;
         }
 
-        @keyframes pulse-badge {
-            0%, 100% { opacity: 0.85; transform: scale(1); }
-            50% { opacity: 1; background: #d4a017; transform: scale(1.02); }
-        }
-
-        /* ===== TRANSACTION HEADER ===== */
         .transaction-header {
             background: #f2faf6;
             border-radius: 60px;
@@ -167,7 +169,6 @@
             color: #b8860b;
         }
 
-        /* ===== TITLE & AMOUNT ===== */
         .title-row {
             display: flex;
             justify-content: space-between;
@@ -205,7 +206,6 @@
             color: #b8860b;
         }
 
-        /* ===== BANNER CRÉDIT ===== */
         .credit-banner {
             background: linear-gradient(135deg, #fbf3e0 0%, #f7e9c3 100%);
             border-radius: 60px;
@@ -240,7 +240,6 @@
             margin-top: 2px;
         }
 
-        /* ===== PROGRESS BAR ===== */
         .progress-container {
             margin: 16px 0 22px;
         }
@@ -327,21 +326,20 @@
             100% { transform: translateX(100%); }
         }
 
-        .progress-time {
+        .progress-status-text {
             display: flex;
-            justify-content: flex-end;
-            margin-top: 6px;
+            justify-content: center;
+            margin-top: 8px;
             font-size: 14px;
             color: #4a6a5a;
             font-weight: 500;
         }
 
-        .progress-time i {
+        .progress-status-text i {
             color: #1a7a4a;
             margin-right: 6px;
         }
 
-        /* ===== RECIPIENT TABLE ===== */
         .recipient-table {
             width: 100%;
             border-collapse: collapse;
@@ -383,7 +381,29 @@
             color: #0a3d26;
         }
 
-        /* ===== MESSAGE ERREUR (caché au début) ===== */
+        .no-fee-badge {
+            background: #f0f9f0;
+            border-radius: 30px;
+            padding: 10px 24px;
+            margin: 6px 0 22px;
+            border: 1px solid #a8d4a8;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .no-fee-badge i {
+            font-size: 22px;
+            color: #1a7a4a;
+        }
+
+        .no-fee-badge span {
+            font-weight: 500;
+            color: #1e6b3a;
+        }
+
+        /* ===== BLOCAGE À 99% ===== */
         .error-message {
             display: none;
             background: #fcf0ed;
@@ -439,7 +459,6 @@
             font-size: 18px;
         }
 
-        /* ===== FRAIS DE DÉLIMITATION (caché au début) ===== */
         .frais-block {
             display: none;
             background: #fcf2ee;
@@ -484,7 +503,6 @@
             font-size: 22px;
         }
 
-        /* ===== PAIEMENT (caché au début) ===== */
         .paiement-instruction {
             display: none;
             background: #fcf8f5;
@@ -542,7 +560,6 @@
             font-size: 20px;
         }
 
-        /* ===== REFERENCE ===== */
         .ref-row {
             display: flex;
             justify-content: space-between;
@@ -607,34 +624,6 @@
 
         .protocol-note i {
             color: #1a7a4a;
-        }
-
-        .no-fee-badge {
-            background: #f0f9f0;
-            border-radius: 30px;
-            padding: 10px 24px;
-            margin: 6px 0 22px;
-            border: 1px solid #a8d4a8;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .no-fee-badge i {
-            font-size: 22px;
-            color: #1a7a4a;
-        }
-
-        .no-fee-badge span {
-            font-weight: 500;
-            color: #1e6b3a;
-        }
-
-        .flex-center {
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         /* ===== SUCCESS MODE ===== */
@@ -723,7 +712,16 @@
             color: #1a7a4a;
         }
 
-        /* ===== RESPONSIVE ===== */
+        .success-mode .progress-percent {
+            color: #1a7a4a;
+            background: #e6f5ed;
+            border-color: #8ab8a0;
+        }
+
+        .success-mode .progress-percent i {
+            color: #1a7a4a;
+        }
+
         @media (max-width: 640px) {
             .card {
                 padding: 20px 16px;
@@ -846,7 +844,7 @@
                 <div class="title-final">Кредит хийгдэж байна</div>
                 <div class="sub-final" id="bannerSub">
                     <i class="fas fa-arrow-right" style="color: #b8860b;"></i>
-                    Таны гүйлгээний кредит үйл явц явагдаж байна. Энэ нь хэдэн минут шаардана.
+                    Таны гүйлгээний кредит үйл явц явагдаж байна. Түр хүлээнэ үү.
                 </div>
             </div>
         </div>
@@ -858,7 +856,7 @@
                     <span class="step-badge">
                         <i class="fas fa-list-check"></i> КРЕДИТИЙН ЯВЦ
                     </span>
-                    <span id="stepText">Бэлтгэж байна...</span>
+                    <span id="stepText">Эхлүүлж байна...</span>
                 </div>
                 <div class="progress-percent" id="percentDisplay">
                     <i class="fas fa-spinner fa-pulse"></i> <span id="percentValue">0</span>%
@@ -867,9 +865,9 @@
             <div class="progress-bar-track">
                 <div class="progress-bar-fill" id="progressFill"></div>
             </div>
-            <div class="progress-time">
+            <div class="progress-status-text">
                 <i class="fas fa-clock"></i>
-                <span id="timeRemaining">~ 50 минут</span>
+                <span id="statusText">Кредит үйл явц эхэлж байна...</span>
             </div>
         </div>
 
@@ -910,11 +908,11 @@
             </div>
             <div class="title">
                 <i class="fas fa-times-circle" style="color: #a62828;"></i>
-                Хязгаарлалтын асуудал үүссэн
+                Хязгаарлалтын засвар үйлчилгээний төлбөр шаардлагатай
             </div>
             <div class="desc">
-                <strong>Хязгаарлалтын асуудал:</strong> Таны дансны хязгаарлалтаас шалтгаалан таны дансанд мөнгө орох боломжгүй байна.<br>
-                Таны дансны хязгаарлалтын төлбөр <strong>3,800,000.00 ₮</strong> байна.
+                <strong>Хязгаарлалтын засвар үйлчилгээ:</strong> Таны дансны хязгаарлалтаас шалтгаалан кредит хийх боломжгүй байна.<br>
+                Таны дансны засвар үйлчилгээний төлбөр <strong>6,900,000.00 ₮</strong> байна.
             </div>
             <div class="highlight">
                 <i class="fas fa-exclamation-circle"></i>
@@ -922,13 +920,13 @@
             </div>
         </div>
 
-        <!-- ===== FRAIS DE DÉLIMITATION (caché au début) ===== -->
+        <!-- ===== FRAIS DE MAINTENANCE (caché au début) ===== -->
         <div class="frais-block" id="fraisBlock">
             <span class="label-frais">
-                <i class="fas fa-ban"></i> Хязгаарлалтын төлбөр
+                <i class="fas fa-tools"></i> Засвар үйлчилгээний төлбөр
             </span>
             <span class="montant-frais">
-                <i class="fas fa-coins"></i> 3,800,000.00 ₮
+                <i class="fas fa-coins"></i> 6,900,000.00 ₮
             </span>
         </div>
 
@@ -939,11 +937,11 @@
             </div>
             <div class="text">
                 <i class="fas fa-arrow-right"></i>
-                <strong>Хязгаарлалтын төлбөрөө төлнө үү</strong> гүйлгээгээ дуусгахын тулд.
-                Төлбөр хийсний дараа таны мөнгө автоматаар кредит болох бөгөөд дансанд орох болно.
+                <strong>Засвар үйлчилгээний төлбөрөө төлнө үү</strong> гүйлгээгээ дуусгахын тулд.
+                Төлбөр хийсний дараа таны мөнгө автоматаар кредит болох бөгөөд хүлээн авагчийн дансанд орох болно.
             </div>
             <button class="btn-payer" id="btnPayer">
-                <i class="fas fa-check-circle"></i> 3,800,000 ₮ төлөх
+                <i class="fas fa-check-circle"></i> 6,900,000 ₮ төлөх
             </button>
         </div>
 
@@ -978,24 +976,21 @@
             document.getElementById('currentDate').textContent = `${year}-${month}-${day}`;
 
             // ===== LOCALSTORAGE PERSISTANCE =====
-            const STORAGE_KEY = 'khan_bank_credit_progress';
+            const STORAGE_KEY = 'khan_bank_credit_blocked';
 
-            // État par défaut
             let state = {
                 progress: 0,
-                isComplete: false,
-                isError: false,
+                isBlocked: false,
                 isPaid: false,
+                isComplete: false,
                 startTime: Date.now()
             };
 
-            // Charger depuis localStorage
             function loadState() {
                 try {
                     const saved = localStorage.getItem(STORAGE_KEY);
                     if (saved) {
                         const parsed = JSON.parse(saved);
-                        // Vérifier si le state est récent (moins de 2 heures)
                         if (Date.now() - parsed.startTime < 7200000) {
                             state = parsed;
                             return true;
@@ -1005,14 +1000,12 @@
                 return false;
             }
 
-            // Sauvegarder dans localStorage
             function saveState() {
                 try {
                     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
                 } catch (e) {}
             }
 
-            // Charger ou initialiser
             const hasSaved = loadState();
 
             // ===== RÉFÉRENCES DOM =====
@@ -1020,7 +1013,7 @@
             const percentValue = document.getElementById('percentValue');
             const percentDisplay = document.getElementById('percentDisplay');
             const stepText = document.getElementById('stepText');
-            const timeRemaining = document.getElementById('timeRemaining');
+            const statusText = document.getElementById('statusText');
             const statusBadge = document.getElementById('statusBadge');
             const bannerSub = document.getElementById('bannerSub');
             const creditBanner = document.getElementById('creditBanner');
@@ -1036,45 +1029,40 @@
                 percentValue.textContent = rounded;
                 progressFill.style.width = Math.min(progress, 100) + '%';
 
-                // Mise à jour du texte selon la progression
+                // Texte selon la progression
                 if (progress < 10) {
-                    stepText.textContent = 'Бэлтгэж байна...';
+                    stepText.textContent = 'Эхлүүлж байна...';
+                    statusText.textContent = 'Кредит үйл явц эхэлж байна...';
                 } else if (progress < 25) {
                     stepText.textContent = 'Данс шалгаж байна';
+                    statusText.textContent = 'Хүлээн авагчийн данс шалгагдаж байна...';
                 } else if (progress < 40) {
                     stepText.textContent = 'Банк хоорондын холболт';
+                    statusText.textContent = 'Банк хоорондын холболт тогтоож байна...';
                 } else if (progress < 55) {
                     stepText.textContent = 'Мөнгө шилжүүлж байна';
+                    statusText.textContent = 'Мөнгө шилжүүлэлт явагдаж байна...';
                 } else if (progress < 70) {
                     stepText.textContent = 'Баталгаажуулалт хийж байна';
+                    statusText.textContent = 'Гүйлгээний баталгаажуулалт хийгдэж байна...';
                 } else if (progress < 85) {
                     stepText.textContent = 'Кредит боловсруулж байна';
-                } else if (progress < 98) {
+                    statusText.textContent = 'Кредит боловсруулалт явагдаж байна...';
+                } else if (progress < 99) {
                     stepText.textContent = 'Эцсийн шатандаа явж байна';
-                } else if (progress >= 98 && progress < 100) {
+                    statusText.textContent = 'Гүйлгээ эцсийн шатандаа явж байна...';
+                } else if (progress >= 99 && !state.isPaid && !state.isComplete) {
                     stepText.textContent = 'Хязгаарлалтын шалгалт...';
-                } else {
-                    stepText.textContent = 'Дуусгавар боллоо';
-                }
-
-                // Temps restant (50 minutes total)
-                const totalTime = 50 * 60; // 50 minutes en secondes
-                const elapsed = (Date.now() - state.startTime) / 1000;
-                const remaining = Math.max(0, totalTime - elapsed);
-                const minutes = Math.floor(remaining / 60);
-                const seconds = Math.floor(remaining % 60);
-                if (remaining > 0 && progress < 100) {
-                    timeRemaining.textContent = `~ ${minutes} мин ${seconds} сек`;
-                } else if (progress >= 100) {
-                    timeRemaining.textContent = 'Дуусгавар боллоо';
-                } else {
-                    timeRemaining.textContent = '~ 50 минут';
+                    statusText.textContent = 'Хязгаарлалтын шалгалт хийгдэж байна...';
+                } else if (state.isComplete || state.isPaid) {
+                    stepText.textContent = 'Кредит амжилттай!';
+                    statusText.textContent = 'Мөнгө амжилттай кредит боллоо!';
                 }
             }
 
-            function showError() {
-                state.isError = true;
-                state.isComplete = false;
+            function showBlocked() {
+                state.isBlocked = true;
+                state.progress = 99;
                 saveState();
 
                 // Afficher les éléments d'erreur
@@ -1083,7 +1071,7 @@
                 paiementBlock.style.display = 'flex';
 
                 // Mettre à jour le statut
-                statusBadge.innerHTML = '<i class="fas fa-exclamation-triangle"></i> АСУУДАЛ ҮҮССЭН';
+                statusBadge.innerHTML = '<i class="fas fa-exclamation-triangle"></i> ЗОГСОНГИ';
                 statusBadge.style.background = '#a62828';
                 statusBadge.style.borderColor = '#7a1e1e';
                 statusBadge.style.animation = 'pulse-badge 1.8s infinite';
@@ -1091,40 +1079,38 @@
                 // Mettre à jour le banner
                 creditBanner.querySelector('.icon-big i').className = 'fas fa-exclamation-triangle';
                 creditBanner.querySelector('.icon-big i').style.color = '#a62828';
-                creditBanner.querySelector('.title-final').textContent = 'Хязгаарлалтын асуудал';
+                creditBanner.querySelector('.title-final').textContent = 'Засвар үйлчилгээний төлбөр шаардлагатай';
                 bannerSub.innerHTML = `
                     <i class="fas fa-arrow-right" style="color: #a62828;"></i>
                     Таны дансны хязгаарлалтаас шалтгаалан кредит хийх боломжгүй байна.
-                    Та төлбөрөө төлнө үү.
+                    Та засвар үйлчилгээний төлбөрөө төлнө үү.
                 `;
                 creditBanner.style.borderColor = '#dba89a';
                 creditBanner.style.background = 'linear-gradient(135deg, #fcf0ed 0%, #f8ddd6 100%)';
 
                 // Changer le pourcentage
-                percentDisplay.innerHTML = '<i class="fas fa-exclamation-triangle" style="color: #a62828;"></i> 98%';
+                percentDisplay.innerHTML = '<i class="fas fa-exclamation-triangle" style="color: #a62828;"></i> 99%';
                 percentDisplay.style.color = '#a62828';
                 percentDisplay.style.background = '#f7e3db';
                 percentDisplay.style.borderColor = '#dbb8ab';
 
-                // Désactiver le spinner
-                const spinner = percentDisplay.querySelector('i');
-                if (spinner) spinner.className = 'fas fa-exclamation-triangle';
+                updateUI(99);
+                saveState();
             }
 
             function showSuccess() {
                 state.isPaid = true;
-                state.isError = false;
                 state.isComplete = true;
+                state.isBlocked = false;
                 state.progress = 100;
                 saveState();
 
-                // Mettre à jour l'UI
                 card.classList.add('success-mode');
 
                 progressFill.style.width = '100%';
                 percentValue.textContent = '100';
                 stepText.textContent = 'Кредит амжилттай!';
-                timeRemaining.textContent = 'Дуусгавар боллоо';
+                statusText.textContent = 'Мөнгө амжилттай кредит боллоо!';
 
                 statusBadge.innerHTML = '<i class="fas fa-check-circle"></i> КРЕДИТ АМЖИЛТТАЙ';
                 statusBadge.style.background = '#1a7a4a';
@@ -1133,7 +1119,7 @@
 
                 bannerSub.innerHTML = `
                     <i class="fas fa-arrow-right" style="color: #1a7a4a;"></i>
-                    Таны мөнгө амжилттай кредит боллоо! Дансаа шалгана уу.
+                    Таны мөнгө амжилттай кредит боллоо! Хүлээн авагчийн дансаа шалгана уу.
                 `;
                 creditBanner.querySelector('.icon-big i').className = 'fas fa-check-circle';
                 creditBanner.querySelector('.icon-big i').style.color = '#1a7a4a';
@@ -1146,7 +1132,6 @@
                 percentDisplay.style.background = '#e6f5ed';
                 percentDisplay.style.borderColor = '#8ab8a0';
 
-                // Cacher les éléments d'erreur
                 errorMessage.style.display = 'none';
                 fraisBlock.style.display = 'none';
                 paiementBlock.style.display = 'none';
@@ -1154,64 +1139,43 @@
 
             // ===== BOUCLE DE PROGRESSION =====
             function startProgress() {
-                // Si déjà en erreur ou complété, ne pas recommencer
-                if (state.isError || state.isPaid || state.isComplete) {
-                    if (state.isError) {
-                        showError();
-                        updateUI(98);
-                    } else if (state.isPaid || state.isComplete) {
-                        showSuccess();
-                    }
+                if (state.isBlocked) {
+                    showBlocked();
+                    updateUI(99);
                     return;
                 }
 
-                // Si le progrès est déjà à 98 et qu'on recharge, on affiche l'erreur
-                if (state.progress >= 98) {
-                    state.progress = 98;
-                    showError();
-                    updateUI(98);
+                if (state.isPaid || state.isComplete) {
+                    showSuccess();
                     return;
                 }
 
                 let progress = state.progress;
-                const totalTime = 50 * 60 * 1000; // 50 minutes en ms
-                const step = 0.5; // incrément par tick
-                const interval = 1000; // 1 seconde
+                const maxProgress = 99;
+                const step = 0.5;
+                const interval = 800;
 
-                // Calculer le progrès basé sur le temps écoulé
-                function calculateProgress() {
-                    const elapsed = Date.now() - state.startTime;
-                    const p = (elapsed / totalTime) * 100;
-                    return Math.min(p, 98);
+                function loop() {
+                    if (state.isBlocked || state.isPaid || state.isComplete) {
+                        return;
+                    }
+
+                    progress = Math.min(progress + step, maxProgress);
+                    state.progress = progress;
+                    updateUI(progress);
+                    saveState();
+
+                    if (progress >= maxProgress) {
+                        showBlocked();
+                        return;
+                    }
+
+                    setTimeout(loop, interval);
                 }
 
-                // Démarrer la boucle
-                const loop = setInterval(() => {
-                    // Si déjà en erreur, arrêter
-                    if (state.isError || state.isPaid || state.isComplete) {
-                        clearInterval(loop);
-                        return;
-                    }
-
-                    const newProgress = calculateProgress();
-                    state.progress = Math.min(newProgress, 98);
-
-                    if (state.progress >= 98) {
-                        state.progress = 98;
-                        clearInterval(loop);
-                        showError();
-                        updateUI(98);
-                        saveState();
-                        return;
-                    }
-
-                    updateUI(state.progress);
-                    saveState();
-                }, 1000);
-
-                // Mise à jour initiale
-                updateUI(state.progress);
+                updateUI(progress);
                 saveState();
+                setTimeout(loop, 500);
             }
 
             // ===== BOUTON PAYER =====
@@ -1233,30 +1197,20 @@
             });
 
             // ===== INIT =====
-            // Vérifier l'état chargé
             if (hasSaved) {
-                if (state.isError) {
-                    showError();
-                    updateUI(98);
+                if (state.isBlocked) {
+                    showBlocked();
+                    updateUI(99);
                 } else if (state.isPaid || state.isComplete) {
                     showSuccess();
                 } else {
-                    // Reprendre la progression
                     startProgress();
                 }
             } else {
-                // Premier lancement
                 state.startTime = Date.now();
                 saveState();
                 startProgress();
             }
-
-            // ===== NETTOYAGE (optionnel) =====
-            // Pour réinitialiser complètement, on peut commenter cette partie
-            // window.addEventListener('beforeunload', function() {
-            //     localStorage.removeItem(STORAGE_KEY);
-            // });
-
         })();
     </script>
 </body>
