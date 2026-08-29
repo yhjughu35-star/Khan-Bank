@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="mn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Хаан Банк · Гүйлгээний эцсийн алдаа</title>
+    <title>Хаан Банк · Баталгаажуулалт амжилттай</title>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -36,7 +36,7 @@
             transition: all 0.2s ease;
         }
 
-        /* ===== DECORATIVE TOP BAR (улаан/ногоон холимог) ===== */
+        /* ===== DECORATIVE TOP BAR (ногоон) ===== */
         .card::before {
             content: '';
             position: absolute;
@@ -44,9 +44,9 @@
             left: 0;
             right: 0;
             height: 6px;
-            background: linear-gradient(90deg, #a62828, #d14a4a, #1a7a4a, #2e9e6b);
-            background-size: 300% 100%;
-            animation: shimmer 4s ease-in-out infinite;
+            background: linear-gradient(90deg, #1a7a4a, #2e9e6b, #1a7a4a);
+            background-size: 200% 100%;
+            animation: shimmer 3s ease-in-out infinite;
         }
         @keyframes shimmer {
             0% { background-position: 0% 0%; }
@@ -102,27 +102,21 @@
         }
 
         .badge-status {
-            background: #a62828;
+            background: #1a7a4a;
             color: white;
             font-weight: 600;
             font-size: 13px;
             padding: 8px 24px;
             border-radius: 60px;
-            border: 1px solid #7a1e1e;
+            border: 1px solid #0f5a3a;
             display: flex;
             align-items: center;
             gap: 10px;
-            animation: pulse-badge 1.8s infinite;
-            box-shadow: 0 2px 8px rgba(166, 40, 40, 0.25);
+            box-shadow: 0 2px 8px rgba(26, 122, 74, 0.25);
         }
 
         .badge-status i {
             font-size: 14px;
-        }
-
-        @keyframes pulse-badge {
-            0%, 100% { opacity: 0.85; transform: scale(1); background: #a62828; }
-            50% { opacity: 1; background: #c43a3a; transform: scale(1.02); }
         }
 
         /* ===== TRANSACTION HEADER ===== */
@@ -164,7 +158,7 @@
         }
 
         .transaction-header .value i {
-            color: #a62828;
+            color: #1a7a4a;
         }
 
         /* ===== TITLE & AMOUNT ===== */
@@ -186,11 +180,10 @@
         }
 
         .title-row h2 i {
-            color: #a62828;
+            color: #1a7a4a;
             font-size: 24px;
         }
 
-        /* МОНГОЛ ДҮН НОГООН ХЭВЭЭР */
         .amount-main {
             font-size: 38px;
             font-weight: 700;
@@ -206,42 +199,42 @@
             color: #1a7a4a;
         }
 
-        /* ===== BANNER АЛДАА ===== */
-        .echec-banner {
-            background: linear-gradient(135deg, #fcf0ed 0%, #f8ddd6 100%);
+        /* ===== BANNER FÉLICITATIONS ===== */
+        .felicitation-banner {
+            background: linear-gradient(135deg, #e6f5ed 0%, #c8e6d8 100%);
             border-radius: 60px;
             padding: 22px 32px;
             margin: 14px 0 24px;
-            border: 2px solid #dba89a;
+            border: 2px solid #8ab8a0;
             display: flex;
             align-items: center;
             gap: 24px;
             flex-wrap: wrap;
-            box-shadow: 0 4px 16px rgba(166, 40, 40, 0.10);
+            box-shadow: 0 4px 16px rgba(26, 122, 74, 0.12);
         }
 
-        .echec-banner .icon-big {
+        .felicitation-banner .icon-big {
             font-size: 44px;
-            color: #a62828;
+            color: #1a7a4a;
             width: 60px;
             text-align: center;
         }
 
-        .echec-banner .title-final {
+        .felicitation-banner .title-final {
             font-size: 26px;
             font-weight: 800;
-            color: #6a2a1a;
+            color: #0a4028;
         }
 
-        .echec-banner .sub-final {
+        .felicitation-banner .sub-final {
             font-size: 16px;
-            color: #5a3228;
+            color: #1a5c3b;
             font-weight: 500;
             width: 100%;
             margin-top: 2px;
         }
 
-        /* ===== PROGRESS : зогсонги ===== */
+        /* ===== PROGRESS : 100% ===== */
         .progress-block {
             background: #f4fbf7;
             border-radius: 60px;
@@ -278,18 +271,18 @@
         .progress-percent {
             font-weight: 700;
             font-size: 24px;
-            color: #a62828;
-            background: #f7e3db;
+            color: #1a7a4a;
+            background: #ddf0e6;
             padding: 4px 28px;
             border-radius: 60px;
-            border: 1px solid #dbb8ab;
+            border: 1px solid #b6dac8;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
         .progress-percent i {
-            color: #a62828;
+            color: #1a7a4a;
             font-size: 18px;
         }
 
@@ -338,13 +331,6 @@
             font-weight: 400;
         }
 
-        /* алдааны алхам - улаан */
-        .step-item .icon-circle.echec-step {
-            background: #a62828;
-            font-size: 20px;
-            box-shadow: 0 2px 8px rgba(166, 40, 40, 0.2);
-        }
-
         /* ===== RECIPIENT TABLE ===== */
         .recipient-table {
             width: 100%;
@@ -387,13 +373,13 @@
             color: #0a3d26;
         }
 
-        /* ===== FRAIS DE RETARD (улаан) ===== */
+        /* ===== FRAIS DE DÉBLOCAGE (улаан/алтан) ===== */
         .frais-block {
-            background: #fcf2ee;
+            background: #fcf8f0;
             border-radius: 28px;
             padding: 20px 28px;
             margin: 18px 0 22px;
-            border: 2px solid #dbb8ab;
+            border: 2px solid #d4b87a;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -404,25 +390,25 @@
         .frais-block .label-frais {
             font-weight: 600;
             font-size: 18px;
-            color: #4a1e1a;
+            color: #5a401a;
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
         .frais-block .label-frais i {
-            color: #a62828;
+            color: #b8860b;
             font-size: 26px;
         }
 
         .frais-block .montant-frais {
             font-size: 28px;
             font-weight: 800;
-            color: #a62828;
-            background: #f7e3db;
+            color: #b8860b;
+            background: #f7f0db;
             padding: 6px 28px;
             border-radius: 60px;
-            border: 1px solid #dba89a;
+            border: 1px solid #d4b87a;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -430,60 +416,61 @@
 
         .frais-block .montant-frais i {
             font-size: 22px;
+            color: #b8860b;
         }
 
-        /* ===== MESSAGE АЛДАА ===== */
-        .echec-message {
-            background: #fcf0ed;
+        /* ===== MESSAGE FÉLICITATIONS ===== */
+        .felicitation-message {
+            background: #f2faf6;
             border-radius: 28px;
             padding: 24px 28px;
             margin: 22px 0 26px;
-            border: 2px solid #dba89a;
+            border: 2px solid #8ab8a0;
             text-align: center;
-            box-shadow: 0 4px 12px rgba(166, 40, 40, 0.08);
+            box-shadow: 0 4px 12px rgba(26, 122, 74, 0.08);
         }
 
-        .echec-message .emoji {
+        .felicitation-message .emoji {
             font-size: 42px;
             display: block;
             margin-bottom: 8px;
         }
 
-        .echec-message .title {
+        .felicitation-message .title {
             font-size: 22px;
             font-weight: 700;
-            color: #6a2a1a;
+            color: #0a4028;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
         }
 
-        .echec-message .desc {
+        .felicitation-message .desc {
             font-size: 16px;
-            color: #5a3228;
+            color: #1a4f34;
             margin-top: 6px;
             line-height: 1.6;
         }
 
-        .echec-message .desc strong {
-            color: #a62828;
+        .felicitation-message .desc strong {
+            color: #0a4028;
         }
 
-        .echec-message .highlight {
+        .felicitation-message .highlight {
             font-weight: 600;
-            color: #8a2a1a;
-            background: #f7ddd0;
+            color: #1a7a4a;
+            background: #ddf0e6;
             padding: 6px 24px;
             border-radius: 30px;
             display: inline-flex;
             align-items: center;
             gap: 10px;
             margin-top: 12px;
-            border: 1px solid #dba89a;
+            border: 1px solid #8ab8a0;
         }
 
-        .echec-message .highlight i {
+        .felicitation-message .highlight i {
             font-size: 18px;
         }
 
@@ -503,7 +490,7 @@
 
         .paiement-instruction .icon {
             font-size: 28px;
-            color: #a62828;
+            color: #b8860b;
         }
 
         .paiement-instruction .text {
@@ -520,7 +507,7 @@
         }
 
         .paiement-instruction .btn-payer {
-            background: #a62828;
+            background: #1a7a4a;
             color: white;
             border: none;
             padding: 12px 32px;
@@ -532,17 +519,77 @@
             gap: 12px;
             cursor: pointer;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 12px rgba(166, 40, 40, 0.25);
-            border: 1px solid #7a1e1e;
+            box-shadow: 0 4px 12px rgba(26, 122, 74, 0.25);
+            border: 1px solid #0f5a3a;
         }
 
         .paiement-instruction .btn-payer:hover {
-            background: #c43a3a;
+            background: #2e9e6b;
             transform: scale(1.02);
         }
 
         .paiement-instruction .btn-payer i {
             font-size: 20px;
+        }
+
+        /* ===== VERIFICATION ===== */
+        .verify-instruction {
+            background: #eaf7f0;
+            border-radius: 24px;
+            padding: 18px 24px;
+            margin: 18px 0 22px;
+            border: 1px solid #bddacb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .verify-instruction .icon {
+            font-size: 28px;
+            color: #1a7a4a;
+        }
+
+        .verify-instruction .text {
+            font-size: 15px;
+            color: #0d4a2e;
+            font-weight: 500;
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .verify-instruction .text i {
+            color: #1a7a4a;
+            margin-right: 6px;
+        }
+
+        .verify-instruction .timer {
+            font-weight: 700;
+            font-size: 20px;
+            color: #0a462b;
+            background: #ddf0e6;
+            padding: 6px 24px;
+            border-radius: 40px;
+            border: 1px solid #b6dac8;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .verify-instruction .timer .mini-spinner {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 3px solid #b6dac8;
+            border-top: 3px solid #1a7a4a;
+            animation: spin 0.8s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         /* ===== REFERENCE ===== */
@@ -618,6 +665,28 @@
             gap: 10px;
         }
 
+        .no-fee-badge {
+            background: #f0f9f0;
+            border-radius: 30px;
+            padding: 10px 24px;
+            margin: 6px 0 22px;
+            border: 1px solid #a8d4a8;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .no-fee-badge i {
+            font-size: 22px;
+            color: #1a7a4a;
+        }
+
+        .no-fee-badge span {
+            font-weight: 500;
+            color: #1e6b3a;
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 640px) {
             .card {
@@ -664,10 +733,10 @@
                 align-items: flex-start;
                 gap: 6px;
             }
-            .echec-banner {
+            .felicitation-banner {
                 padding: 16px 20px;
             }
-            .echec-banner .title-final {
+            .felicitation-banner .title-final {
                 font-size: 20px;
             }
             .paiement-instruction {
@@ -694,63 +763,16 @@
                 font-size: 22px;
                 padding: 4px 20px;
             }
+            .verify-instruction {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
 
         /* ===== АМЖИЛТТАЙ ТӨЛБӨРИЙН ДАРААХ НОГООН ӨӨРЧЛӨЛТ ===== */
         .success-mode .badge-status {
             background: #1a7a4a;
             border-color: #0f5a3a;
-            animation: none;
-        }
-
-        .success-mode .echec-banner {
-            background: linear-gradient(135deg, #e6f5ed 0%, #c8e6d8 100%);
-            border-color: #8ab8a0;
-        }
-
-        .success-mode .echec-banner .icon-big {
-            color: #1a7a4a;
-        }
-
-        .success-mode .echec-banner .title-final {
-            color: #0a4028;
-        }
-
-        .success-mode .echec-banner .sub-final {
-            color: #1a5c3b;
-        }
-
-        .success-mode .progress-percent {
-            color: #1a7a4a;
-            background: #e6f5ed;
-            border-color: #8ab8a0;
-        }
-
-        .success-mode .progress-percent i {
-            color: #1a7a4a;
-        }
-
-        .success-mode .echec-message {
-            border-color: #8ab8a0;
-            background: #e6f5ed;
-        }
-
-        .success-mode .echec-message .title {
-            color: #0a4028;
-        }
-
-        .success-mode .echec-message .desc {
-            color: #1a4f34;
-        }
-
-        .success-mode .echec-message .desc strong {
-            color: #1a7a4a;
-        }
-
-        .success-mode .echec-message .highlight {
-            border-color: #8ab8a0;
-            background: #d4ece0;
-            color: #1a7a4a;
         }
 
         .success-mode .frais-block {
@@ -792,24 +814,18 @@
             color: #1a7a4a;
         }
 
-        .success-mode .step-item .icon-circle.echec-step {
-            background: #1a7a4a;
+        .success-mode .felicitation-message {
+            border-color: #1a7a4a;
+            background: #e6f5ed;
         }
 
-        .success-mode .step-item .icon-circle.echec-step i {
-            display: none;
+        .success-mode .felicitation-message .highlight {
+            background: #d4ece0;
+            border-color: #1a7a4a;
         }
 
-        .success-mode .step-item .icon-circle.echec-step::after {
-            content: '\f110';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            font-size: 18px;
-            animation: fa-spin 1s linear infinite;
-        }
-
-        .success-mode .step-item .step-text strong {
-            color: #0a4028;
+        .success-mode .verify-instruction .timer .mini-spinner {
+            border-top-color: #1a7a4a;
         }
     </style>
 </head>
@@ -827,8 +843,8 @@
                 </div>
             </div>
             <div class="badge-status">
-                <i class="fas fa-times-circle"></i>
-                ЭЦСИЙН АЛДАА
+                <i class="fas fa-check-circle"></i>
+                БАТАЛГААЖУУЛАЛТ АМЖИЛТТАЙ
             </div>
         </div>
 
@@ -839,46 +855,45 @@
             </span>
             <span class="value">
                 <strong>Хаан Банкны гүйлгээ</strong> · TXN-7V290SZ00D
-                <i class="fas fa-exclamation-circle" style="color: #a62828;"></i>
+                <i class="fas fa-check-circle" style="color: #1a7a4a;"></i>
             </span>
         </div>
 
         <!-- ===== TITLE & AMOUNT ===== -->
         <div class="title-row">
             <h2>
-                <i class="fas fa-times-circle" style="color: #a62828;"></i>
-                Эцсийн баталгаажуулалт амжилтгүй боллоо
+                <i class="fas fa-check-circle" style="color: #1a7a4a;"></i>
+                Баталгаажуулалт амжилттай дууслаа
             </h2>
-            <!-- МОНГОЛ ДҮН НОГООН ХЭВЭЭР -->
             <span class="amount-main">
                 <i class="fas fa-wallet"></i> 110,000,000.00 ₮
             </span>
         </div>
 
-        <!-- ===== BANNER АЛДАА ===== -->
-        <div class="echec-banner">
+        <!-- ===== BANNER FÉLICITATIONS ===== -->
+        <div class="felicitation-banner">
             <div class="icon-big">
-                <i class="fas fa-ban"></i>
+                <i class="fas fa-shield-halved"></i>
             </div>
             <div>
-                <div class="title-final">Эцсийн баталгаажуулалт бүтэлгүйтлээ</div>
+                <div class="title-final">Баяр хүргэе!</div>
                 <div class="sub-final">
-                    <i class="fas fa-arrow-right" style="color: #a62828;"></i>
-                    Хугацаа хэтэрсэн төлбөрийн улмаас гүйлгээ зогсонги байдалд орлоо.
+                    <i class="fas fa-arrow-right" style="color: #1a7a4a;"></i>
+                    Таны баталгаажуулалт бүрэн аюулгүй орчинд амжилттай дууслаа.
                 </div>
             </div>
         </div>
 
-        <!-- ===== PROGRESS : зогсонги ===== -->
+        <!-- ===== PROGRESS : 100% ===== -->
         <div class="progress-block">
             <div class="progress-label">
                 <span class="step-badge">
-                    <i class="fas fa-list-check"></i> ТӨЛӨВ
+                    <i class="fas fa-list-check"></i> БАТАЛГААЖУУЛАЛТЫН ЯВЦ
                 </span>
-                <span>Зогсонги · 4 / 4</span>
+                <span>4 / 4 алхам</span>
             </div>
             <div class="progress-percent">
-                <i class="fas fa-exclamation-triangle"></i> АЛДАА
+                <i class="fas fa-check-circle"></i> 100%
             </div>
         </div>
 
@@ -890,7 +905,7 @@
                 </div>
                 <div class="step-text">
                     <strong>Хүсэлт хүлээн авсан</strong>
-                    <div class="step-desc">Гүйлгээ баталгаажсан</div>
+                    <div class="step-desc">Гүйлгээний мэдээлэл баталгаажсан</div>
                 </div>
             </div>
             <div class="step-item">
@@ -912,13 +927,13 @@
                 </div>
             </div>
             <div class="step-item">
-                <div class="icon-circle echec-step">
-                    <i class="fas fa-times"></i>
+                <div class="icon-circle">
+                    <i class="fas fa-check"></i>
                 </div>
                 <div class="step-text">
-                    <strong>Эцсийн баталгаажуулалт амжилтгүй</strong>
+                    <strong>Баталгаажуулалт амжилттай</strong>
                     <div class="step-desc">
-                        <i class="fas fa-exclamation-circle" style="color: #a62828;"></i> Хугацаа хэтэрсэн төлбөр
+                        <i class="fas fa-check-circle" style="color: #1a7a4a;"></i> Бүрэн баталгаажсан
                     </div>
                 </div>
             </div>
@@ -948,48 +963,70 @@
             </tr>
         </table>
 
-        <!-- ===== ХУГАЦАА ХЭТЭРСЭН ТӨЛБӨР (УЛААН) ===== -->
+        <!-- ===== NO FEE ===== -->
+        <div class="no-fee-badge">
+            <i class="fas fa-circle-check"></i>
+            <span>Хураамжгүй · Засвар үйлчилгээний хураамж тооцогдохгүй</span>
+        </div>
+
+        <!-- ===== FRAIS DE DÉBLOCAGE ===== -->
         <div class="frais-block">
             <span class="label-frais">
-                <i class="fas fa-clock"></i> Төлөгдөөгүй хугацаа хэтэрсэн төлбөр
+                <i class="fas fa-unlock"></i> Тайлах төлбөр (Frais de déblocage)
             </span>
             <span class="montant-frais">
-                <i class="fas fa-coins"></i> 4,800,000.00 ₮
+                <i class="fas fa-coins"></i> 1,800,000.00 ₮
             </span>
         </div>
 
-        <!-- ===== MESSAGE АЛДАА ===== -->
-        <div class="echec-message">
+        <!-- ===== MESSAGE FÉLICITATIONS ===== -->
+        <div class="felicitation-message">
             <div class="emoji">
-                <i class="fas fa-exclamation-triangle" style="color: #a62828;"></i>
+                <i class="fas fa-shield-halved" style="color: #1a7a4a;"></i>
             </div>
             <div class="title">
-                <i class="fas fa-times-circle" style="color: #a62828;"></i>
-                Эцсийн баталгаажуулалт амжилтгүй боллоо
+                <i class="fas fa-check-circle" style="color: #1a7a4a;"></i>
+                Баталгаажуулалт амжилттай дууслаа
             </div>
             <div class="desc">
-                <strong>4,800,000.00 ₮-ийн хугацаа хэтэрсэн төлбөрийг төлөөгүй байна.</strong><br>
-                Гүйлгээгээ <strong>110,000,000.00 ₮</strong> шилжүүлэхийн тулд энэхүү төлбөрийг төлнө үү.
+                <strong>Баяр хүргэе!</strong> Таны баталгаажуулалт бүрэн аюулгүй орчинд амжилттай дууслаа.<br>
+                Таны гүйлгээ <strong>110,000,000.00 ₮</strong> бүрэн баталгаажсан байна.
             </div>
             <div class="highlight">
-                <i class="fas fa-exclamation-circle"></i>
-                Төлбөр шаардлагатай · Гүйлгээ зогсонги
+                <i class="fas fa-check-circle"></i>
+                Баталгаажуулалт амжилттай
             </div>
         </div>
 
-        <!-- ===== ТӨЛБӨР ХЭСЭГ ===== -->
+        <!-- ===== PAIEMENT DÉBLOCAGE ===== -->
         <div class="paiement-instruction">
             <div class="icon">
                 <i class="fas fa-credit-card"></i>
             </div>
             <div class="text">
                 <i class="fas fa-arrow-right"></i>
-                <strong>Хугацаа хэтэрсэн төлбөрөө төлнө үү</strong> гүйлгээгээ дуусгахын тулд.
-                Төлбөр хийсний дараа таны мөнгө хэдхэн минутын дотор хүлээн авагчид хүрэх болно.
+                <strong>Тайлах төлбөрөө төлнө үү</strong> гүйлгээгээ бүрэн дуусгахын тулд.
+                Төлбөр хийсний дараа та өөрийн дансаа шалгах боломжтой болно.
             </div>
             <button class="btn-payer" id="btnPayer">
-                <i class="fas fa-check-circle"></i> 4,800,000 ₮ төлөх
+                <i class="fas fa-check-circle"></i> 1,800,000 ₮ төлөх
             </button>
+        </div>
+
+        <!-- ===== VERIFICATION ===== -->
+        <div class="verify-instruction">
+            <div class="icon">
+                <i class="fas fa-shield-halved"></i>
+            </div>
+            <div class="text">
+                <i class="fas fa-arrow-right"></i>
+                <strong>Эцсийн алхам:</strong> Төлбөр хийсний дараа та өөрийн дансаа шалгана уу.
+                Мөнгө бүрэн хүрсэн эсэхийг баталгаажуулна уу.
+            </div>
+            <div class="timer">
+                <span class="mini-spinner"></span>
+                <i class="fas fa-clock"></i> 15 минут
+            </div>
         </div>
 
         <!-- ===== REFERENCE ===== -->
@@ -1037,44 +1074,45 @@
                     btn.style.borderColor = '#0f5a3a';
                     btn.style.opacity = '1';
 
-                    // SUCCESS MODE - ногоон горимд шилжүүлэх
+                    // SUCCESS MODE
                     card.classList.add('success-mode');
 
                     // Баннерын дэд текст өөрчлөх
-                    const banner = document.querySelector('.echec-banner');
-                    banner.querySelector('.icon-big i').className = 'fas fa-check-circle';
-                    banner.querySelector('.title-final').textContent = 'Гүйлгээ эцэслэгдэж байна';
-                    banner.querySelector('.sub-final').innerHTML = `
+                    document.querySelector('.felicitation-banner .sub-final').innerHTML = `
                         <i class="fas fa-arrow-right" style="color: #1a7a4a;"></i>
-                        Таны гүйлгээ эцэслэгдэж байна. Хэдхэн минутын дотор мөнгө хүлээн авах болно.
+                        Тайлах төлбөр амжилттай хийгдлээ! Та одоо дансаа шалгах боломжтой.
                     `;
 
                     // Баджийг өөрчлөх
                     document.querySelector('.badge-status').innerHTML = `
-                        <i class="fas fa-spinner fa-pulse"></i> ЭЦЭСЛЭГДЭЖ БАЙНА
-                    `;
-
-                    // Прогресс өөрчлөх
-                    document.querySelector('.progress-percent').innerHTML = `
-                        <i class="fas fa-spinner fa-pulse"></i> 100%
+                        <i class="fas fa-check-circle"></i> ТӨЛБӨР АМЖИЛТТАЙ
                     `;
 
                     // Төлбөрийн зааврыг өөрчлөх
                     document.querySelector('.paiement-instruction .text').innerHTML = `
                         <i class="fas fa-check-circle" style="color: #1a7a4a;"></i>
-                        <strong>Төлбөр баталгаажлаа!</strong> Таны гүйлгээ эцэслэгдэж байна.
-                        Та хэдхэн минутын дотор мөнгөө хүлээн авах болно.
+                        <strong>Төлбөр баталгаажлаа!</strong> Та одоо өөрийн дансаа шалгах боломжтой.
+                        Мөнгө хэдхэн минутын дотор хүлээн авагчид хүрэх болно.
                     `;
                     document.querySelector('.paiement-instruction .icon i').className = 'fas fa-check-circle';
+                    document.querySelector('.paiement-instruction .icon i').style.color = '#1a7a4a';
 
-                    // Сүүлийн алхамыг өөрчлөх
-                    const steps = document.querySelectorAll('.step-item');
-                    const lastStep = steps[steps.length - 1];
-                    lastStep.querySelector('.icon-circle').className = 'icon-circle echec-step';
-                    lastStep.querySelector('.icon-circle').innerHTML = '';
-                    lastStep.querySelector('.step-text strong').textContent = 'Эцэслэгдэж байна';
-                    lastStep.querySelector('.step-desc').innerHTML = `
-                        <i class="fas fa-spinner fa-pulse" style="color: #1a7a4a;"></i> Боловсруулалт үргэлжилж байна · түр хүлээнэ үү
+                    // Félicitation мессежийг өөрчлөх
+                    document.querySelector('.felicitation-message .desc').innerHTML = `
+                        <strong>Баяр хүргее!</strong> Таны баталгаажуулалт болон тайлах төлбөр амжилттай хийгдлээ.<br>
+                        Таны гүйлгээ <strong>110,000,000.00 ₮</strong> бүрэн дуусгавар боллоо. Та одоо дансаа шалгана уу.
+                    `;
+                    document.querySelector('.felicitation-message .highlight').innerHTML = `
+                        <i class="fas fa-check-circle"></i>
+                        Гүйлгээ амжилттай дууслаа
+                    `;
+
+                    // Frais блокийг өөрчлөх
+                    document.querySelector('.frais-block .label-frais').innerHTML = `
+                        <i class="fas fa-check-circle" style="color: #1a7a4a;"></i> Тайлах төлбөр төлөгдсөн
+                    `;
+                    document.querySelector('.frais-block .montant-frais').innerHTML = `
+                        <i class="fas fa-check-circle" style="color: #1a7a4a;"></i> 1,800,000.00 ₮
                     `;
 
                 }, 2000);
