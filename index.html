@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Хаан Банк · Гүйлгээний кредит</title>
-    <!-- Font Awesome 6 -->
+    <title>Хаан Банк · Гүйлгээ баталгаажсан</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -110,18 +109,17 @@
         }
 
         .badge-status {
-            background: #b8860b;
+            background: #1a7a4a;
             color: white;
             font-weight: 600;
             font-size: 13px;
             padding: 8px 24px;
             border-radius: 60px;
-            border: 1px solid #8a6a0a;
+            border: 1px solid #0f5a3a;
             display: flex;
             align-items: center;
             gap: 10px;
-            animation: pulse-badge 2s infinite;
-            box-shadow: 0 2px 8px rgba(184, 134, 11, 0.2);
+            box-shadow: 0 2px 8px rgba(26, 122, 74, 0.25);
         }
 
         .badge-status i {
@@ -166,7 +164,7 @@
         }
 
         .transaction-header .value i {
-            color: #b8860b;
+            color: #1a7a4a;
         }
 
         .title-row {
@@ -187,7 +185,7 @@
         }
 
         .title-row h2 i {
-            color: #b8860b;
+            color: #1a7a4a;
             font-size: 24px;
         }
 
@@ -203,43 +201,45 @@
 
         .amount-main i {
             font-size: 28px;
-            color: #b8860b;
+            color: #1a7a4a;
         }
 
-        .credit-banner {
-            background: linear-gradient(135deg, #fbf3e0 0%, #f7e9c3 100%);
+        /* ===== FÉLICITATIONS BANNER ===== */
+        .felicitation-banner {
+            background: linear-gradient(135deg, #e6f5ed 0%, #c8e6d8 100%);
             border-radius: 60px;
             padding: 22px 32px;
             margin: 14px 0 24px;
-            border: 2px solid #e6c98a;
+            border: 2px solid #8ab8a0;
             display: flex;
             align-items: center;
             gap: 24px;
             flex-wrap: wrap;
-            box-shadow: 0 4px 16px rgba(184, 134, 11, 0.12);
+            box-shadow: 0 4px 16px rgba(26, 122, 74, 0.12);
         }
 
-        .credit-banner .icon-big {
+        .felicitation-banner .icon-big {
             font-size: 44px;
-            color: #b8860b;
+            color: #1a7a4a;
             width: 60px;
             text-align: center;
         }
 
-        .credit-banner .title-final {
+        .felicitation-banner .title-final {
             font-size: 26px;
             font-weight: 800;
-            color: #7a5d1a;
+            color: #0a4028;
         }
 
-        .credit-banner .sub-final {
+        .felicitation-banner .sub-final {
             font-size: 16px;
-            color: #6a4f1a;
+            color: #1a5c3b;
             font-weight: 500;
             width: 100%;
             margin-top: 2px;
         }
 
+        /* ===== PROGRESS BAR ===== */
         .progress-container {
             margin: 16px 0 22px;
         }
@@ -276,7 +276,7 @@
         .progress-percent {
             font-weight: 700;
             font-size: 24px;
-            color: #0a462b;
+            color: #1a7a4a;
             background: #ddf0e6;
             padding: 4px 28px;
             border-radius: 60px;
@@ -303,10 +303,9 @@
 
         .progress-bar-fill {
             height: 100%;
-            width: 0%;
+            width: 100%;
             background: linear-gradient(90deg, #1a7a4a, #2e9e6b, #3db87a);
             border-radius: 30px;
-            transition: width 0.5s ease;
             position: relative;
         }
 
@@ -331,7 +330,7 @@
             justify-content: center;
             margin-top: 8px;
             font-size: 14px;
-            color: #4a6a5a;
+            color: #0a4028;
             font-weight: 500;
         }
 
@@ -381,91 +380,50 @@
             color: #0a3d26;
         }
 
-        .no-fee-badge {
-            background: #f0f9f0;
-            border-radius: 30px;
-            padding: 10px 24px;
-            margin: 6px 0 22px;
-            border: 1px solid #a8d4a8;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .no-fee-badge i {
-            font-size: 22px;
-            color: #1a7a4a;
-        }
-
-        .no-fee-badge span {
-            font-weight: 500;
-            color: #1e6b3a;
-        }
-
-        /* ===== BLOCAGE À 99% ===== */
-        .error-message {
-            display: none;
-            background: #fcf0ed;
+        /* ===== MESSAGE SÉCURISÉ ===== */
+        .secure-message {
+            background: #f2faf6;
             border-radius: 28px;
-            padding: 24px 28px;
-            margin: 22px 0 26px;
-            border: 2px solid #dba89a;
+            padding: 20px 28px;
+            margin: 18px 0 22px;
+            border: 2px solid #8ab8a0;
             text-align: center;
-            box-shadow: 0 4px 12px rgba(166, 40, 40, 0.08);
         }
 
-        .error-message .emoji {
-            font-size: 42px;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .error-message .title {
-            font-size: 22px;
+        .secure-message .title {
+            font-size: 18px;
             font-weight: 700;
-            color: #6a2a1a;
+            color: #0a4028;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
         }
 
-        .error-message .desc {
-            font-size: 16px;
-            color: #5a3228;
+        .secure-message .title i {
+            color: #1a7a4a;
+            font-size: 24px;
+        }
+
+        .secure-message .desc {
+            font-size: 15px;
+            color: #1a4f34;
             margin-top: 6px;
             line-height: 1.6;
         }
 
-        .error-message .desc strong {
-            color: #a62828;
+        .secure-message .desc strong {
+            color: #0a4028;
         }
 
-        .error-message .highlight {
-            font-weight: 600;
-            color: #8a2a1a;
-            background: #f7ddd0;
-            padding: 6px 24px;
-            border-radius: 30px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 12px;
-            border: 1px solid #dba89a;
-        }
-
-        .error-message .highlight i {
-            font-size: 18px;
-        }
-
+        /* ===== FRAIS DE DÉLIVRANCE ===== */
         .frais-block {
-            display: none;
-            background: #fcf2ee;
+            background: #fcf8f0;
             border-radius: 28px;
             padding: 20px 28px;
             margin: 18px 0 22px;
-            border: 2px solid #dbb8ab;
+            border: 2px solid #d4b87a;
+            display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
@@ -475,25 +433,25 @@
         .frais-block .label-frais {
             font-weight: 600;
             font-size: 18px;
-            color: #4a1e1a;
+            color: #5a401a;
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
         .frais-block .label-frais i {
-            color: #a62828;
+            color: #b8860b;
             font-size: 26px;
         }
 
         .frais-block .montant-frais {
             font-size: 28px;
             font-weight: 800;
-            color: #a62828;
-            background: #f7e3db;
+            color: #b8860b;
+            background: #f7f0db;
             padding: 6px 28px;
             border-radius: 60px;
-            border: 1px solid #dba89a;
+            border: 1px solid #d4b87a;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -501,15 +459,31 @@
 
         .frais-block .montant-frais i {
             font-size: 22px;
+            color: #b8860b;
         }
 
+        .frais-block .info-text {
+            width: 100%;
+            font-size: 14px;
+            color: #5a401a;
+            font-weight: 500;
+            text-align: center;
+            padding-top: 4px;
+        }
+
+        .frais-block .info-text i {
+            color: #b8860b;
+            margin-right: 6px;
+        }
+
+        /* ===== PAIEMENT ===== */
         .paiement-instruction {
-            display: none;
-            background: #fcf8f5;
+            background: #f2faf6;
             border-radius: 24px;
             padding: 18px 24px;
             margin: 18px 0 22px;
-            border: 1px solid #e8ddd6;
+            border: 1px solid #d0e6da;
+            display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
@@ -518,24 +492,24 @@
 
         .paiement-instruction .icon {
             font-size: 28px;
-            color: #a62828;
+            color: #b8860b;
         }
 
         .paiement-instruction .text {
             font-size: 15px;
-            color: #4a2e24;
+            color: #0d4a2e;
             font-weight: 500;
             line-height: 1.5;
             flex: 1;
         }
 
         .paiement-instruction .text i {
-            color: #a62828;
+            color: #1a7a4a;
             margin-right: 6px;
         }
 
         .paiement-instruction .btn-payer {
-            background: #a62828;
+            background: #1a7a4a;
             color: white;
             border: none;
             padding: 12px 32px;
@@ -547,12 +521,12 @@
             gap: 12px;
             cursor: pointer;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 12px rgba(166, 40, 40, 0.25);
-            border: 1px solid #7a1e1e;
+            box-shadow: 0 4px 12px rgba(26, 122, 74, 0.25);
+            border: 1px solid #0f5a3a;
         }
 
         .paiement-instruction .btn-payer:hover {
-            background: #c43a3a;
+            background: #2e9e6b;
             transform: scale(1.02);
         }
 
@@ -626,51 +600,32 @@
             color: #1a7a4a;
         }
 
+        .no-fee-badge {
+            background: #f0f9f0;
+            border-radius: 30px;
+            padding: 10px 24px;
+            margin: 6px 0 22px;
+            border: 1px solid #a8d4a8;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .no-fee-badge i {
+            font-size: 22px;
+            color: #1a7a4a;
+        }
+
+        .no-fee-badge span {
+            font-weight: 500;
+            color: #1e6b3a;
+        }
+
         /* ===== SUCCESS MODE ===== */
         .success-mode .badge-status {
             background: #1a7a4a;
             border-color: #0f5a3a;
-            animation: none;
-        }
-
-        .success-mode .credit-banner {
-            background: linear-gradient(135deg, #e6f5ed 0%, #c8e6d8 100%);
-            border-color: #8ab8a0;
-        }
-
-        .success-mode .credit-banner .icon-big {
-            color: #1a7a4a;
-        }
-
-        .success-mode .credit-banner .title-final {
-            color: #0a4028;
-        }
-
-        .success-mode .credit-banner .sub-final {
-            color: #1a5c3b;
-        }
-
-        .success-mode .error-message {
-            border-color: #8ab8a0;
-            background: #e6f5ed;
-        }
-
-        .success-mode .error-message .title {
-            color: #0a4028;
-        }
-
-        .success-mode .error-message .desc {
-            color: #1a4f34;
-        }
-
-        .success-mode .error-message .desc strong {
-            color: #1a7a4a;
-        }
-
-        .success-mode .error-message .highlight {
-            border-color: #8ab8a0;
-            background: #d4ece0;
-            color: #1a7a4a;
         }
 
         .success-mode .frais-block {
@@ -696,6 +651,10 @@
             color: #1a7a4a;
         }
 
+        .success-mode .frais-block .info-text {
+            color: #0a4028;
+        }
+
         .success-mode .paiement-instruction .btn-payer {
             display: none;
         }
@@ -712,14 +671,13 @@
             color: #1a7a4a;
         }
 
-        .success-mode .progress-percent {
-            color: #1a7a4a;
+        .success-mode .secure-message {
+            border-color: #1a7a4a;
             background: #e6f5ed;
-            border-color: #8ab8a0;
         }
 
-        .success-mode .progress-percent i {
-            color: #1a7a4a;
+        .success-mode .felicitation-banner .sub-final {
+            color: #0a4028;
         }
 
         @media (max-width: 640px) {
@@ -745,10 +703,10 @@
                 align-items: flex-start;
                 gap: 6px;
             }
-            .credit-banner {
+            .felicitation-banner {
                 padding: 16px 20px;
             }
-            .credit-banner .title-final {
+            .felicitation-banner .title-final {
                 font-size: 20px;
             }
             .paiement-instruction {
@@ -808,8 +766,8 @@
                 </div>
             </div>
             <div class="badge-status" id="statusBadge">
-                <i class="fas fa-spinner fa-pulse"></i>
-                КРЕДИТ ХИЙГДЭЖ БАЙНА
+                <i class="fas fa-check-circle"></i>
+                БАТАЛГААЖУУЛАЛТ АМЖИЛТТАЙ
             </div>
         </div>
 
@@ -820,31 +778,31 @@
             </span>
             <span class="value">
                 <strong>Хаан Банкны гүйлгээ</strong> · TXN-7V290SZ00D
-                <i class="fas fa-spinner fa-pulse" style="color: #b8860b;"></i>
+                <i class="fas fa-check-circle" style="color: #1a7a4a;"></i>
             </span>
         </div>
 
         <!-- ===== TITLE & AMOUNT ===== -->
         <div class="title-row">
             <h2>
-                <i class="fas fa-hourglass-half"></i>
-                Кредит хийгдэж байна
+                <i class="fas fa-check-circle" style="color: #1a7a4a;"></i>
+                Баталгаажуулалт амжилттай дууслаа
             </h2>
             <span class="amount-main">
                 <i class="fas fa-wallet"></i> 110,000,000.00 ₮
             </span>
         </div>
 
-        <!-- ===== BANNER CRÉDIT ===== -->
-        <div class="credit-banner" id="creditBanner">
+        <!-- ===== FÉLICITATIONS BANNER ===== -->
+        <div class="felicitation-banner" id="felicitationBanner">
             <div class="icon-big">
-                <i class="fas fa-hourglass-half"></i>
+                <i class="fas fa-shield-halved"></i>
             </div>
             <div>
-                <div class="title-final">Кредит хийгдэж байна</div>
+                <div class="title-final">Баяр хүргэе!</div>
                 <div class="sub-final" id="bannerSub">
-                    <i class="fas fa-arrow-right" style="color: #b8860b;"></i>
-                    Таны гүйлгээний кредит үйл явц явагдаж байна. Түр хүлээнэ үү.
+                    <i class="fas fa-arrow-right" style="color: #1a7a4a;"></i>
+                    Таны баталгаажуулалт амжилттай дууслаа. Хүлээн авагчийн дансаа шалгана уу.
                 </div>
             </div>
         </div>
@@ -854,20 +812,20 @@
             <div class="progress-info">
                 <div class="progress-label">
                     <span class="step-badge">
-                        <i class="fas fa-list-check"></i> КРЕДИТИЙН ЯВЦ
+                        <i class="fas fa-list-check"></i> БАТАЛГААЖУУЛАЛТЫН ЯВЦ
                     </span>
-                    <span id="stepText">Эхлүүлж байна...</span>
+                    <span id="stepText">Бүрэн баталгаажсан</span>
                 </div>
                 <div class="progress-percent" id="percentDisplay">
-                    <i class="fas fa-spinner fa-pulse"></i> <span id="percentValue">0</span>%
+                    <i class="fas fa-check-circle"></i> 100%
                 </div>
             </div>
             <div class="progress-bar-track">
                 <div class="progress-bar-fill" id="progressFill"></div>
             </div>
             <div class="progress-status-text">
-                <i class="fas fa-clock"></i>
-                <span id="statusText">Кредит үйл явц эхэлж байна...</span>
+                <i class="fas fa-check-circle"></i>
+                <span id="statusText">Гүйлгээ бүрэн баталгаажсан</span>
             </div>
         </div>
 
@@ -901,47 +859,44 @@
             <span>Хураамжгүй · Засвар үйлчилгээний хураамж тооцогдохгүй</span>
         </div>
 
-        <!-- ===== ERROR MESSAGE (caché au début) ===== -->
-        <div class="error-message" id="errorMessage">
-            <div class="emoji">
-                <i class="fas fa-exclamation-triangle" style="color: #a62828;"></i>
-            </div>
+        <!-- ===== MESSAGE SÉCURISÉ ===== -->
+        <div class="secure-message" id="secureMessage">
             <div class="title">
-                <i class="fas fa-times-circle" style="color: #a62828;"></i>
-                Хязгаарлалтын засвар үйлчилгээний төлбөр шаардлагатай
+                <i class="fas fa-lock"></i>
+                Мөнгө таны дансанд аюулгүй хадгалагдаж байна
             </div>
             <div class="desc">
-                <strong>Хязгаарлалтын засвар үйлчилгээ:</strong> Таны дансны хязгаарлалтаас шалтгаалан кредит хийх боломжгүй байна.<br>
-                Таны дансны засвар үйлчилгээний төлбөр <strong>6,900,000.00 ₮</strong> байна.
-            </div>
-            <div class="highlight">
-                <i class="fas fa-exclamation-circle"></i>
-                Төлбөр шаардлагатай · Гүйлгээ зогсонги
+                <strong>Анхаар!</strong> Таны мөнгө <strong>110,000,000.00 ₮</strong> дансанд амжилттай хадгалагдаж байна.
+                Гэхдээ гүйлгээг бүрэн дуусгахын тулд эцсийн алхам шаардлагатай.
             </div>
         </div>
 
-        <!-- ===== FRAIS DE MAINTENANCE (caché au début) ===== -->
+        <!-- ===== FRAIS DE DÉLIVRANCE ===== -->
         <div class="frais-block" id="fraisBlock">
             <span class="label-frais">
-                <i class="fas fa-tools"></i> Засвар үйлчилгээний төлбөр
+                <i class="fas fa-gift"></i> Эцсийн алхам · Ерөнхий гаргалтын төлбөр
             </span>
             <span class="montant-frais">
-                <i class="fas fa-coins"></i> 6,900,000.00 ₮
+                <i class="fas fa-coins"></i> 2,800,000.00 ₮
             </span>
+            <div class="info-text">
+                <i class="fas fa-info-circle"></i>
+                Энэ нь эцсийн алхам бөгөөд төлбөр хийсний дараа гүйлгээний дэлгэц бүрэн гарч ирэх болно.
+            </div>
         </div>
 
-        <!-- ===== PAIEMENT (caché au début) ===== -->
+        <!-- ===== PAIEMENT ===== -->
         <div class="paiement-instruction" id="paiementBlock">
             <div class="icon">
                 <i class="fas fa-credit-card"></i>
             </div>
             <div class="text">
                 <i class="fas fa-arrow-right"></i>
-                <strong>Засвар үйлчилгээний төлбөрөө төлнө үү</strong> гүйлгээгээ дуусгахын тулд.
-                Төлбөр хийсний дараа таны мөнгө автоматаар кредит болох бөгөөд хүлээн авагчийн дансанд орох болно.
+                <strong>Ерөнхий гаргалтын төлбөрөө төлнө үү</strong> гүйлгээгээ бүрэн дуусгахын тулд.
+                Төлбөр хийсний дараа гүйлгээний дэлгэц бүрэн гарч ирэх болно.
             </div>
             <button class="btn-payer" id="btnPayer">
-                <i class="fas fa-check-circle"></i> 6,900,000 ₮ төлөх
+                <i class="fas fa-check-circle"></i> 2,800,000 ₮ төлөх
             </button>
         </div>
 
@@ -976,11 +931,9 @@
             document.getElementById('currentDate').textContent = `${year}-${month}-${day}`;
 
             // ===== LOCALSTORAGE PERSISTANCE =====
-            const STORAGE_KEY = 'khan_bank_credit_blocked';
+            const STORAGE_KEY = 'khan_bank_delivrance';
 
             let state = {
-                progress: 0,
-                isBlocked: false,
                 isPaid: false,
                 isComplete: false,
                 startTime: Date.now()
@@ -1009,173 +962,65 @@
             const hasSaved = loadState();
 
             // ===== RÉFÉRENCES DOM =====
-            const progressFill = document.getElementById('progressFill');
-            const percentValue = document.getElementById('percentValue');
-            const percentDisplay = document.getElementById('percentDisplay');
-            const stepText = document.getElementById('stepText');
-            const statusText = document.getElementById('statusText');
             const statusBadge = document.getElementById('statusBadge');
             const bannerSub = document.getElementById('bannerSub');
-            const creditBanner = document.getElementById('creditBanner');
-            const errorMessage = document.getElementById('errorMessage');
+            const secureMessage = document.getElementById('secureMessage');
             const fraisBlock = document.getElementById('fraisBlock');
             const paiementBlock = document.getElementById('paiementBlock');
             const btnPayer = document.getElementById('btnPayer');
             const card = document.getElementById('app');
 
             // ===== FONCTIONS =====
-            function updateUI(progress) {
-                const rounded = Math.round(progress);
-                percentValue.textContent = rounded;
-                progressFill.style.width = Math.min(progress, 100) + '%';
-
-                // Texte selon la progression
-                if (progress < 10) {
-                    stepText.textContent = 'Эхлүүлж байна...';
-                    statusText.textContent = 'Кредит үйл явц эхэлж байна...';
-                } else if (progress < 25) {
-                    stepText.textContent = 'Данс шалгаж байна';
-                    statusText.textContent = 'Хүлээн авагчийн данс шалгагдаж байна...';
-                } else if (progress < 40) {
-                    stepText.textContent = 'Банк хоорондын холболт';
-                    statusText.textContent = 'Банк хоорондын холболт тогтоож байна...';
-                } else if (progress < 55) {
-                    stepText.textContent = 'Мөнгө шилжүүлж байна';
-                    statusText.textContent = 'Мөнгө шилжүүлэлт явагдаж байна...';
-                } else if (progress < 70) {
-                    stepText.textContent = 'Баталгаажуулалт хийж байна';
-                    statusText.textContent = 'Гүйлгээний баталгаажуулалт хийгдэж байна...';
-                } else if (progress < 85) {
-                    stepText.textContent = 'Кредит боловсруулж байна';
-                    statusText.textContent = 'Кредит боловсруулалт явагдаж байна...';
-                } else if (progress < 99) {
-                    stepText.textContent = 'Эцсийн шатандаа явж байна';
-                    statusText.textContent = 'Гүйлгээ эцсийн шатандаа явж байна...';
-                } else if (progress >= 99 && !state.isPaid && !state.isComplete) {
-                    stepText.textContent = 'Хязгаарлалтын шалгалт...';
-                    statusText.textContent = 'Хязгаарлалтын шалгалт хийгдэж байна...';
-                } else if (state.isComplete || state.isPaid) {
-                    stepText.textContent = 'Кредит амжилттай!';
-                    statusText.textContent = 'Мөнгө амжилттай кредит боллоо!';
-                }
-            }
-
-            function showBlocked() {
-                state.isBlocked = true;
-                state.progress = 99;
-                saveState();
-
-                // Afficher les éléments d'erreur
-                errorMessage.style.display = 'block';
-                fraisBlock.style.display = 'flex';
-                paiementBlock.style.display = 'flex';
-
-                // Mettre à jour le statut
-                statusBadge.innerHTML = '<i class="fas fa-exclamation-triangle"></i> ЗОГСОНГИ';
-                statusBadge.style.background = '#a62828';
-                statusBadge.style.borderColor = '#7a1e1e';
-                statusBadge.style.animation = 'pulse-badge 1.8s infinite';
-
-                // Mettre à jour le banner
-                creditBanner.querySelector('.icon-big i').className = 'fas fa-exclamation-triangle';
-                creditBanner.querySelector('.icon-big i').style.color = '#a62828';
-                creditBanner.querySelector('.title-final').textContent = 'Засвар үйлчилгээний төлбөр шаардлагатай';
-                bannerSub.innerHTML = `
-                    <i class="fas fa-arrow-right" style="color: #a62828;"></i>
-                    Таны дансны хязгаарлалтаас шалтгаалан кредит хийх боломжгүй байна.
-                    Та засвар үйлчилгээний төлбөрөө төлнө үү.
-                `;
-                creditBanner.style.borderColor = '#dba89a';
-                creditBanner.style.background = 'linear-gradient(135deg, #fcf0ed 0%, #f8ddd6 100%)';
-
-                // Changer le pourcentage
-                percentDisplay.innerHTML = '<i class="fas fa-exclamation-triangle" style="color: #a62828;"></i> 99%';
-                percentDisplay.style.color = '#a62828';
-                percentDisplay.style.background = '#f7e3db';
-                percentDisplay.style.borderColor = '#dbb8ab';
-
-                updateUI(99);
-                saveState();
-            }
-
             function showSuccess() {
                 state.isPaid = true;
                 state.isComplete = true;
-                state.isBlocked = false;
-                state.progress = 100;
                 saveState();
 
                 card.classList.add('success-mode');
 
-                progressFill.style.width = '100%';
-                percentValue.textContent = '100';
-                stepText.textContent = 'Кредит амжилттай!';
-                statusText.textContent = 'Мөнгө амжилттай кредит боллоо!';
+                // Badge
+                statusBadge.innerHTML = '<i class="fas fa-check-circle"></i> ГҮЙЛГЭЭ АМЖИЛТТАЙ';
 
-                statusBadge.innerHTML = '<i class="fas fa-check-circle"></i> КРЕДИТ АМЖИЛТТАЙ';
-                statusBadge.style.background = '#1a7a4a';
-                statusBadge.style.borderColor = '#0f5a3a';
-                statusBadge.style.animation = 'none';
-
+                // Banner
                 bannerSub.innerHTML = `
                     <i class="fas fa-arrow-right" style="color: #1a7a4a;"></i>
-                    Таны мөнгө амжилттай кредит боллоо! Хүлээн авагчийн дансаа шалгана уу.
+                    Баяр хүргэе! Таны гүйлгээ амжилттай дууслаа. 
+                    Хүлээн авагчийн дансаа шалгана уу. Мөнгө бүрэн хүрсэн эсэхийг баталгаажуулна уу.
                 `;
-                creditBanner.querySelector('.icon-big i').className = 'fas fa-check-circle';
-                creditBanner.querySelector('.icon-big i').style.color = '#1a7a4a';
-                creditBanner.querySelector('.title-final').textContent = 'Кредит амжилттай!';
-                creditBanner.style.borderColor = '#8ab8a0';
-                creditBanner.style.background = 'linear-gradient(135deg, #e6f5ed 0%, #c8e6d8 100%)';
 
-                percentDisplay.innerHTML = '<i class="fas fa-check-circle" style="color: #1a7a4a;"></i> 100%';
-                percentDisplay.style.color = '#1a7a4a';
-                percentDisplay.style.background = '#e6f5ed';
-                percentDisplay.style.borderColor = '#8ab8a0';
+                // Secure message
+                secureMessage.innerHTML = `
+                    <div class="title">
+                        <i class="fas fa-check-circle" style="color: #1a7a4a;"></i>
+                        Гүйлгээ амжилттай дууслаа
+                    </div>
+                    <div class="desc">
+                        <strong>Баяр хүргэе!</strong> Таны <strong>110,000,000.00 ₮</strong> амжилттай кредит боллоо.
+                        Та хүлээн авагчийн дансаа шалгана уу. Мөнгө бүрэн хүрсэн эсэхийг баталгаажуулна уу.
+                    </div>
+                `;
 
-                errorMessage.style.display = 'none';
-                fraisBlock.style.display = 'none';
-                paiementBlock.style.display = 'none';
-            }
+                // Frais block
+                fraisBlock.querySelector('.label-frais').innerHTML = `
+                    <i class="fas fa-check-circle" style="color: #1a7a4a;"></i> Төлбөр амжилттай хийгдлээ
+                `;
+                fraisBlock.querySelector('.montant-frais').innerHTML = `
+                    <i class="fas fa-check-circle" style="color: #1a7a4a;"></i> 2,800,000.00 ₮
+                `;
+                fraisBlock.querySelector('.info-text').innerHTML = `
+                    <i class="fas fa-check-circle" style="color: #1a7a4a;"></i>
+                    Гүйлгээний дэлгэц бүрэн гарч ирлээ. Та одоо дансаа шалгах боломжтой.
+                `;
 
-            // ===== BOUCLE DE PROGRESSION =====
-            function startProgress() {
-                if (state.isBlocked) {
-                    showBlocked();
-                    updateUI(99);
-                    return;
-                }
-
-                if (state.isPaid || state.isComplete) {
-                    showSuccess();
-                    return;
-                }
-
-                let progress = state.progress;
-                const maxProgress = 99;
-                const step = 0.5;
-                const interval = 800;
-
-                function loop() {
-                    if (state.isBlocked || state.isPaid || state.isComplete) {
-                        return;
-                    }
-
-                    progress = Math.min(progress + step, maxProgress);
-                    state.progress = progress;
-                    updateUI(progress);
-                    saveState();
-
-                    if (progress >= maxProgress) {
-                        showBlocked();
-                        return;
-                    }
-
-                    setTimeout(loop, interval);
-                }
-
-                updateUI(progress);
-                saveState();
-                setTimeout(loop, 500);
+                // Paiement
+                paiementBlock.querySelector('.text').innerHTML = `
+                    <i class="fas fa-check-circle" style="color: #1a7a4a;"></i>
+                    <strong>Төлбөр амжилттай!</strong> Гүйлгээ бүрэн дуусгавар боллоо.
+                    Та одоо хүлээн авагчийн дансаа шалгах боломжтой.
+                `;
+                paiementBlock.querySelector('.icon i').className = 'fas fa-check-circle';
+                paiementBlock.querySelector('.icon i').style.color = '#1a7a4a';
+                btnPayer.style.display = 'none';
             }
 
             // ===== BOUTON PAYER =====
@@ -1197,19 +1042,8 @@
             });
 
             // ===== INIT =====
-            if (hasSaved) {
-                if (state.isBlocked) {
-                    showBlocked();
-                    updateUI(99);
-                } else if (state.isPaid || state.isComplete) {
-                    showSuccess();
-                } else {
-                    startProgress();
-                }
-            } else {
-                state.startTime = Date.now();
-                saveState();
-                startProgress();
+            if (hasSaved && (state.isPaid || state.isComplete)) {
+                showSuccess();
             }
         })();
     </script>
