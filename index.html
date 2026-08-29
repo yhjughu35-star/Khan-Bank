@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Хаан Банк · Гүйлгээ баталгаажсан</title>
+    <title>Хаан Банк · Эцсийн баталгаажуулалт</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -55,11 +55,6 @@
         @keyframes pulse-badge {
             0%, 100% { opacity: 0.85; transform: scale(1); }
             50% { opacity: 1; transform: scale(1.02); }
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
 
         .bank-header {
@@ -204,8 +199,8 @@
             color: #1a7a4a;
         }
 
-        /* ===== FÉLICITATIONS BANNER ===== */
-        .felicitation-banner {
+        /* ===== FINALISATION BANNER ===== */
+        .finalisation-banner {
             background: linear-gradient(135deg, #e6f5ed 0%, #c8e6d8 100%);
             border-radius: 60px;
             padding: 22px 32px;
@@ -218,20 +213,20 @@
             box-shadow: 0 4px 16px rgba(26, 122, 74, 0.12);
         }
 
-        .felicitation-banner .icon-big {
+        .finalisation-banner .icon-big {
             font-size: 44px;
             color: #1a7a4a;
             width: 60px;
             text-align: center;
         }
 
-        .felicitation-banner .title-final {
+        .finalisation-banner .title-final {
             font-size: 26px;
             font-weight: 800;
             color: #0a4028;
         }
 
-        .felicitation-banner .sub-final {
+        .finalisation-banner .sub-final {
             font-size: 16px;
             color: #1a5c3b;
             font-weight: 500;
@@ -380,8 +375,8 @@
             color: #0a3d26;
         }
 
-        /* ===== MESSAGE SÉCURISÉ ===== */
-        .secure-message {
+        /* ===== MESSAGE FINALISATION ===== */
+        .finalisation-message {
             background: #f2faf6;
             border-radius: 28px;
             padding: 20px 28px;
@@ -390,7 +385,7 @@
             text-align: center;
         }
 
-        .secure-message .title {
+        .finalisation-message .title {
             font-size: 18px;
             font-weight: 700;
             color: #0a4028;
@@ -400,23 +395,23 @@
             gap: 10px;
         }
 
-        .secure-message .title i {
+        .finalisation-message .title i {
             color: #1a7a4a;
             font-size: 24px;
         }
 
-        .secure-message .desc {
+        .finalisation-message .desc {
             font-size: 15px;
             color: #1a4f34;
             margin-top: 6px;
             line-height: 1.6;
         }
 
-        .secure-message .desc strong {
+        .finalisation-message .desc strong {
             color: #0a4028;
         }
 
-        /* ===== FRAIS DE DÉLIVRANCE ===== */
+        /* ===== FRAIS DE GARANTIE ===== */
         .frais-block {
             background: #fcf8f0;
             border-radius: 28px;
@@ -671,12 +666,12 @@
             color: #1a7a4a;
         }
 
-        .success-mode .secure-message {
+        .success-mode .finalisation-message {
             border-color: #1a7a4a;
             background: #e6f5ed;
         }
 
-        .success-mode .felicitation-banner .sub-final {
+        .success-mode .finalisation-banner .sub-final {
             color: #0a4028;
         }
 
@@ -703,10 +698,10 @@
                 align-items: flex-start;
                 gap: 6px;
             }
-            .felicitation-banner {
+            .finalisation-banner {
                 padding: 16px 20px;
             }
-            .felicitation-banner .title-final {
+            .finalisation-banner .title-final {
                 font-size: 20px;
             }
             .paiement-instruction {
@@ -767,7 +762,7 @@
             </div>
             <div class="badge-status" id="statusBadge">
                 <i class="fas fa-check-circle"></i>
-                БАТАЛГААЖУУЛАЛТ АМЖИЛТТАЙ
+                ЭЦСИЙН БАТАЛГААЖУУЛАЛТ АМЖИЛТТАЙ
             </div>
         </div>
 
@@ -786,23 +781,23 @@
         <div class="title-row">
             <h2>
                 <i class="fas fa-check-circle" style="color: #1a7a4a;"></i>
-                Баталгаажуулалт амжилттай дууслаа
+                Эцсийн баталгаажуулалт амжилттай
             </h2>
             <span class="amount-main">
                 <i class="fas fa-wallet"></i> 110,000,000.00 ₮
             </span>
         </div>
 
-        <!-- ===== FÉLICITATIONS BANNER ===== -->
-        <div class="felicitation-banner" id="felicitationBanner">
+        <!-- ===== FINALISATION BANNER ===== -->
+        <div class="finalisation-banner" id="finalisationBanner">
             <div class="icon-big">
                 <i class="fas fa-shield-halved"></i>
             </div>
             <div>
-                <div class="title-final">Баяр хүргэе!</div>
+                <div class="title-final">Эцсийн баталгаажуулалт амжилттай!</div>
                 <div class="sub-final" id="bannerSub">
                     <i class="fas fa-arrow-right" style="color: #1a7a4a;"></i>
-                    Таны баталгаажуулалт амжилттай дууслаа. Хүлээн авагчийн дансаа шалгана уу.
+                    Таны гүйлгээний эцсийн баталгаажуулалт амжилттай дууслаа.
                 </div>
             </div>
         </div>
@@ -859,29 +854,28 @@
             <span>Хураамжгүй · Засвар үйлчилгээний хураамж тооцогдохгүй</span>
         </div>
 
-        <!-- ===== MESSAGE SÉCURISÉ ===== -->
-        <div class="secure-message" id="secureMessage">
+        <!-- ===== MESSAGE FINALISATION ===== -->
+        <div class="finalisation-message" id="finalisationMessage">
             <div class="title">
-                <i class="fas fa-lock"></i>
-                Мөнгө таны дансанд аюулгүй хадгалагдаж байна
+                <i class="fas fa-check-circle"></i>
+                Эцсийн баталгаажуулалт амжилттай
             </div>
             <div class="desc">
-                <strong>Анхаар!</strong> Таны мөнгө <strong>110,000,000.00 ₮</strong> дансанд амжилттай хадгалагдаж байна.
-                Гэхдээ гүйлгээг бүрэн дуусгахын тулд эцсийн алхам шаардлагатай.
+                <strong>Баяр хүргэе!</strong> Таны гүйлгээний эцсийн баталгаажуулалт амжилттай дууслаа.
             </div>
         </div>
 
-        <!-- ===== FRAIS DE DÉLIVRANCE ===== -->
+        <!-- ===== FRAIS DE GARANTIE ===== -->
         <div class="frais-block" id="fraisBlock">
             <span class="label-frais">
-                <i class="fas fa-gift"></i> Эцсийн алхам · Ерөнхий гаргалтын төлбөр
+                <i class="fas fa-shield"></i> Баталгааны төлбөр · Frais de garantie
             </span>
             <span class="montant-frais">
-                <i class="fas fa-coins"></i> 2,800,000.00 ₮
+                <i class="fas fa-coins"></i> 1,900,000.00 ₮
             </span>
             <div class="info-text">
                 <i class="fas fa-info-circle"></i>
-                Энэ нь эцсийн алхам бөгөөд төлбөр хийсний дараа гүйлгээний дэлгэц бүрэн гарч ирэх болно.
+                Эцсийн алхам: Баталгааны төлбөрийг төлсний дараа гүйлгээ бүрэн дуусгавар болно.
             </div>
         </div>
 
@@ -892,11 +886,11 @@
             </div>
             <div class="text">
                 <i class="fas fa-arrow-right"></i>
-                <strong>Ерөнхий гаргалтын төлбөрөө төлнө үү</strong> гүйлгээгээ бүрэн дуусгахын тулд.
-                Төлбөр хийсний дараа гүйлгээний дэлгэц бүрэн гарч ирэх болно.
+                <strong>Баталгааны төлбөрөө төлнө үү</strong> гүйлгээгээ бүрэн дуусгахын тулд.
+                Төлбөр хийсний дараа таны гүйлгээ бүрэн дуусгавар болно.
             </div>
             <button class="btn-payer" id="btnPayer">
-                <i class="fas fa-check-circle"></i> 2,800,000 ₮ төлөх
+                <i class="fas fa-check-circle"></i> 1,900,000 ₮ төлөх
             </button>
         </div>
 
@@ -931,7 +925,7 @@
             document.getElementById('currentDate').textContent = `${year}-${month}-${day}`;
 
             // ===== LOCALSTORAGE PERSISTANCE =====
-            const STORAGE_KEY = 'khan_bank_delivrance';
+            const STORAGE_KEY = 'khan_bank_garantie';
 
             let state = {
                 isPaid: false,
@@ -964,7 +958,7 @@
             // ===== RÉFÉRENCES DOM =====
             const statusBadge = document.getElementById('statusBadge');
             const bannerSub = document.getElementById('bannerSub');
-            const secureMessage = document.getElementById('secureMessage');
+            const finalisationMessage = document.getElementById('finalisationMessage');
             const fraisBlock = document.getElementById('fraisBlock');
             const paiementBlock = document.getElementById('paiementBlock');
             const btnPayer = document.getElementById('btnPayer');
@@ -984,19 +978,19 @@
                 // Banner
                 bannerSub.innerHTML = `
                     <i class="fas fa-arrow-right" style="color: #1a7a4a;"></i>
-                    Баяр хүргэе! Таны гүйлгээ амжилттай дууслаа. 
-                    Хүлээн авагчийн дансаа шалгана уу. Мөнгө бүрэн хүрсэн эсэхийг баталгаажуулна уу.
+                    Баяр хүргэе! Таны гүйлгээ бүрэн дуусгавар боллоо.
+                    Хүлээн авагчийн дансаа шалгана уу.
                 `;
 
-                // Secure message
-                secureMessage.innerHTML = `
+                // Message
+                finalisationMessage.innerHTML = `
                     <div class="title">
                         <i class="fas fa-check-circle" style="color: #1a7a4a;"></i>
                         Гүйлгээ амжилттай дууслаа
                     </div>
                     <div class="desc">
-                        <strong>Баяр хүргэе!</strong> Таны <strong>110,000,000.00 ₮</strong> амжилттай кредит боллоо.
-                        Та хүлээн авагчийн дансаа шалгана уу. Мөнгө бүрэн хүрсэн эсэхийг баталгаажуулна уу.
+                        <strong>Баяр хүргее!</strong> Таны <strong>110,000,000.00 ₮</strong> гүйлгээ амжилттай дуусгавар боллоо.
+                        Та хүлээн авагчийн дансаа шалгана уу.
                     </div>
                 `;
 
@@ -1005,18 +999,17 @@
                     <i class="fas fa-check-circle" style="color: #1a7a4a;"></i> Төлбөр амжилттай хийгдлээ
                 `;
                 fraisBlock.querySelector('.montant-frais').innerHTML = `
-                    <i class="fas fa-check-circle" style="color: #1a7a4a;"></i> 2,800,000.00 ₮
+                    <i class="fas fa-check-circle" style="color: #1a7a4a;"></i> 1,900,000.00 ₮
                 `;
                 fraisBlock.querySelector('.info-text').innerHTML = `
                     <i class="fas fa-check-circle" style="color: #1a7a4a;"></i>
-                    Гүйлгээний дэлгэц бүрэн гарч ирлээ. Та одоо дансаа шалгах боломжтой.
+                    Гүйлгээ бүрэн дуусгавар боллоо. Та одоо дансаа шалгах боломжтой.
                 `;
 
                 // Paiement
                 paiementBlock.querySelector('.text').innerHTML = `
                     <i class="fas fa-check-circle" style="color: #1a7a4a;"></i>
                     <strong>Төлбөр амжилттай!</strong> Гүйлгээ бүрэн дуусгавар боллоо.
-                    Та одоо хүлээн авагчийн дансаа шалгах боломжтой.
                 `;
                 paiementBlock.querySelector('.icon i').className = 'fas fa-check-circle';
                 paiementBlock.querySelector('.icon i').style.color = '#1a7a4a';
@@ -1041,11 +1034,4 @@
                 }, 2000);
             });
 
-            // ===== INIT =====
-            if (hasSaved && (state.isPaid || state.isComplete)) {
-                showSuccess();
-            }
-        })();
-    </script>
-</body>
-</html>
+            // =====
