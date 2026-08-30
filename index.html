@@ -1,8 +1,8 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="mn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Хаан Банк · Эцсийн баталгаажуулалт</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -13,13 +13,19 @@
             font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
         }
 
+        html {
+            font-size: 16px;
+            -webkit-text-size-adjust: 100%;
+        }
+
         body {
             background: #eef3f0;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 24px;
+            padding: 16px;
+            margin: 0;
         }
 
         .card {
@@ -57,6 +63,12 @@
             50% { opacity: 1; transform: scale(1.02); }
         }
 
+        @keyframes shimmer-bar {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* ===== HEADER ===== */
         .bank-header {
             display: flex;
             align-items: center;
@@ -65,12 +77,14 @@
             padding-bottom: 18px;
             margin-bottom: 20px;
             border-bottom: 2px solid #e8f2ec;
+            gap: 12px;
         }
 
         .bank-brand {
             display: flex;
             align-items: center;
             gap: 12px;
+            flex-wrap: wrap;
         }
 
         .bank-logo {
@@ -86,17 +100,18 @@
             font-weight: 800;
             letter-spacing: -0.5px;
             box-shadow: 0 4px 12px rgba(26, 122, 74, 0.25);
+            flex-shrink: 0;
         }
 
         .bank-name {
-            font-size: 26px;
+            font-size: clamp(20px, 4vw, 26px);
             font-weight: 700;
             color: #0a4028;
             letter-spacing: -0.3px;
         }
 
         .bank-name-sub {
-            font-size: 15px;
+            font-size: clamp(12px, 2vw, 15px);
             font-weight: 500;
             color: #2a6b48;
             margin-left: 4px;
@@ -107,7 +122,7 @@
             background: #b8860b;
             color: white;
             font-weight: 600;
-            font-size: 13px;
+            font-size: clamp(11px, 1.8vw, 13px);
             padding: 8px 24px;
             border-radius: 60px;
             border: 1px solid #8a6a0a;
@@ -116,12 +131,14 @@
             gap: 10px;
             animation: pulse-badge 2s infinite;
             box-shadow: 0 2px 8px rgba(184, 134, 11, 0.2);
+            flex-shrink: 0;
         }
 
         .badge-status i {
             font-size: 14px;
         }
 
+        /* ===== TRANSACTION HEADER ===== */
         .transaction-header {
             background: #f2faf6;
             border-radius: 60px;
@@ -132,12 +149,13 @@
             justify-content: space-between;
             flex-wrap: wrap;
             border: 1px solid #d0e6da;
+            gap: 8px;
         }
 
         .transaction-header .label {
             font-weight: 600;
             color: #0d4a2e;
-            font-size: 13px;
+            font-size: clamp(11px, 1.8vw, 13px);
             letter-spacing: 0.5px;
             text-transform: uppercase;
             display: flex;
@@ -153,50 +171,55 @@
         .transaction-header .value {
             font-weight: 600;
             color: #0a4028;
-            font-size: 15px;
+            font-size: clamp(13px, 2vw, 15px);
             display: flex;
             align-items: center;
             gap: 12px;
+            flex-wrap: wrap;
         }
 
         .transaction-header .value i {
             color: #b8860b;
         }
 
+        /* ===== TITLE & AMOUNT ===== */
         .title-row {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
             flex-wrap: wrap;
             margin-bottom: 14px;
+            gap: 8px;
         }
 
         .title-row h2 {
-            font-size: 22px;
+            font-size: clamp(18px, 3vw, 22px);
             font-weight: 600;
             color: #0a4028;
             display: flex;
             align-items: center;
             gap: 12px;
+            flex-wrap: wrap;
         }
 
         .title-row h2 i {
             color: #b8860b;
-            font-size: 24px;
+            font-size: clamp(20px, 3vw, 24px);
         }
 
         .amount-main {
-            font-size: 38px;
+            font-size: clamp(28px, 5vw, 38px);
             font-weight: 700;
             color: #0a462b;
             letter-spacing: 1px;
             display: flex;
             align-items: center;
             gap: 10px;
+            flex-wrap: wrap;
         }
 
         .amount-main i {
-            font-size: 28px;
+            font-size: clamp(22px, 3.5vw, 28px);
             color: #b8860b;
         }
 
@@ -215,20 +238,21 @@
         }
 
         .excuse-banner .icon-big {
-            font-size: 44px;
+            font-size: clamp(36px, 5vw, 44px);
             color: #a62828;
             width: 60px;
             text-align: center;
+            flex-shrink: 0;
         }
 
         .excuse-banner .title-final {
-            font-size: 26px;
+            font-size: clamp(20px, 3.5vw, 26px);
             font-weight: 800;
             color: #6a2a1a;
         }
 
         .excuse-banner .sub-final {
-            font-size: 16px;
+            font-size: clamp(14px, 2.2vw, 16px);
             color: #5a3228;
             font-weight: 500;
             width: 100%;
@@ -246,6 +270,7 @@
             align-items: center;
             flex-wrap: wrap;
             margin-bottom: 8px;
+            gap: 8px;
         }
 
         .progress-label {
@@ -254,14 +279,15 @@
             gap: 14px;
             font-weight: 500;
             color: #0f4a2e;
-            font-size: 15px;
+            font-size: clamp(13px, 2vw, 15px);
+            flex-wrap: wrap;
         }
 
         .progress-label .step-badge {
             background: #cfe6db;
             padding: 4px 18px;
             border-radius: 40px;
-            font-size: 13px;
+            font-size: clamp(11px, 1.6vw, 13px);
             font-weight: 600;
             color: #0a3d25;
             display: flex;
@@ -271,10 +297,10 @@
 
         .progress-percent {
             font-weight: 700;
-            font-size: 24px;
+            font-size: clamp(20px, 3.5vw, 24px);
             color: #b8860b;
             background: #f7f0db;
-            padding: 4px 28px;
+            padding: 4px 20px;
             border-radius: 60px;
             border: 1px solid #d4b87a;
             display: flex;
@@ -284,7 +310,7 @@
 
         .progress-percent i {
             color: #b8860b;
-            font-size: 18px;
+            font-size: clamp(16px, 2.5vw, 18px);
         }
 
         .progress-bar-track {
@@ -299,10 +325,11 @@
 
         .progress-bar-fill {
             height: 100%;
-            width: 100%;
+            width: 99%;
             background: linear-gradient(90deg, #b8860b, #d4a017, #b8860b);
             border-radius: 30px;
             position: relative;
+            transition: width 0.5s ease;
         }
 
         .progress-bar-fill::after {
@@ -316,18 +343,14 @@
             animation: shimmer-bar 2s infinite;
         }
 
-        @keyframes shimmer-bar {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
         .progress-status-text {
             display: flex;
             justify-content: center;
             margin-top: 8px;
-            font-size: 14px;
+            font-size: clamp(13px, 2vw, 14px);
             color: #5a401a;
             font-weight: 500;
+            text-align: center;
         }
 
         .progress-status-text i {
@@ -335,6 +358,7 @@
             margin-right: 6px;
         }
 
+        /* ===== RECIPIENT TABLE ===== */
         .recipient-table {
             width: 100%;
             border-collapse: collapse;
@@ -348,7 +372,7 @@
         .recipient-table td {
             padding: 14px 22px;
             border-bottom: 1px solid #e2f0e8;
-            font-size: 15px;
+            font-size: clamp(13px, 2vw, 15px);
         }
 
         .recipient-table tr:last-child td {
@@ -369,60 +393,75 @@
             color: #1a7a4a;
             font-size: 16px;
             width: 20px;
+            flex-shrink: 0;
         }
 
         .recipient-table td:last-child {
             font-weight: 500;
             color: #0a3d26;
+            word-break: break-all;
         }
 
         /* ===== MESSAGE EXCUSE ===== */
         .excuse-message {
             background: #fcf0ed;
             border-radius: 28px;
-            padding: 20px 28px;
+            padding: 20px 24px;
             margin: 18px 0 22px;
             border: 2px solid #dba89a;
             text-align: center;
         }
 
         .excuse-message .title {
-            font-size: 18px;
+            font-size: clamp(16px, 2.5vw, 18px);
             font-weight: 700;
             color: #6a2a1a;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
+            flex-wrap: wrap;
         }
 
         .excuse-message .title i {
             color: #a62828;
-            font-size: 24px;
+            font-size: clamp(20px, 3vw, 24px);
         }
 
         .excuse-message .desc {
-            font-size: 15px;
+            font-size: clamp(14px, 2.2vw, 15px);
             color: #5a3228;
             margin-top: 6px;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
         .excuse-message .desc strong {
             color: #a62828;
         }
 
+        .excuse-message .desc .responsibility {
+            color: #8a2a1a;
+            font-weight: 600;
+            background: #f7ddd0;
+            padding: 4px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 6px;
+            font-size: clamp(13px, 2vw, 14px);
+        }
+
         .excuse-message .highlight {
             font-weight: 600;
             color: #8a2a1a;
             background: #f7ddd0;
-            padding: 6px 24px;
+            padding: 6px 20px;
             border-radius: 30px;
             display: inline-flex;
             align-items: center;
             gap: 10px;
             margin-top: 12px;
             border: 1px solid #dba89a;
+            font-size: clamp(13px, 2vw, 14px);
         }
 
         .excuse-message .highlight i {
@@ -433,42 +472,43 @@
         .timer-block {
             background: #fcf8f0;
             border-radius: 28px;
-            padding: 16px 28px;
+            padding: 16px 20px;
             margin: 18px 0 22px;
             border: 2px solid #d4b87a;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 20px;
+            gap: 16px;
             flex-wrap: wrap;
         }
 
         .timer-block .timer-icon {
-            font-size: 32px;
+            font-size: clamp(28px, 4vw, 32px);
             color: #b8860b;
         }
 
         .timer-block .timer-text {
-            font-size: 16px;
+            font-size: clamp(14px, 2.2vw, 16px);
             font-weight: 500;
             color: #5a401a;
+            text-align: center;
         }
 
         .timer-block .timer-text strong {
             color: #b8860b;
-            font-size: 22px;
+            font-size: clamp(18px, 3vw, 22px);
         }
 
         .timer-block .timer-countdown {
-            font-size: 28px;
+            font-size: clamp(22px, 3.5vw, 28px);
             font-weight: 800;
             color: #b8860b;
             background: #f7f0db;
-            padding: 6px 28px;
+            padding: 6px 20px;
             border-radius: 60px;
             border: 1px solid #d4b87a;
             font-family: 'Courier New', monospace;
-            min-width: 120px;
+            min-width: 100px;
             text-align: center;
         }
 
@@ -476,7 +516,7 @@
         .frais-block {
             background: #fcf2ee;
             border-radius: 28px;
-            padding: 20px 28px;
+            padding: 20px 24px;
             margin: 18px 0 22px;
             border: 2px solid #dbb8ab;
             display: flex;
@@ -488,24 +528,25 @@
 
         .frais-block .label-frais {
             font-weight: 600;
-            font-size: 18px;
+            font-size: clamp(16px, 2.5vw, 18px);
             color: #4a1e1a;
             display: flex;
             align-items: center;
             gap: 12px;
+            flex-wrap: wrap;
         }
 
         .frais-block .label-frais i {
             color: #a62828;
-            font-size: 26px;
+            font-size: clamp(22px, 3.5vw, 26px);
         }
 
         .frais-block .montant-frais {
-            font-size: 28px;
+            font-size: clamp(22px, 3.5vw, 28px);
             font-weight: 800;
             color: #a62828;
             background: #f7e3db;
-            padding: 6px 28px;
+            padding: 6px 20px;
             border-radius: 60px;
             border: 1px solid #dba89a;
             display: flex;
@@ -514,13 +555,13 @@
         }
 
         .frais-block .montant-frais i {
-            font-size: 22px;
+            font-size: clamp(18px, 2.8vw, 22px);
             color: #a62828;
         }
 
         .frais-block .info-text {
             width: 100%;
-            font-size: 14px;
+            font-size: clamp(13px, 2vw, 14px);
             color: #5a3228;
             font-weight: 500;
             text-align: center;
@@ -536,7 +577,7 @@
         .paiement-instruction {
             background: #f2faf6;
             border-radius: 24px;
-            padding: 18px 24px;
+            padding: 18px 20px;
             margin: 18px 0 22px;
             border: 1px solid #d0e6da;
             display: flex;
@@ -547,16 +588,18 @@
         }
 
         .paiement-instruction .icon {
-            font-size: 28px;
+            font-size: clamp(24px, 3.5vw, 28px);
             color: #a62828;
+            flex-shrink: 0;
         }
 
         .paiement-instruction .text {
-            font-size: 15px;
+            font-size: clamp(13px, 2.2vw, 15px);
             color: #0d4a2e;
             font-weight: 500;
             line-height: 1.5;
             flex: 1;
+            min-width: 150px;
         }
 
         .paiement-instruction .text i {
@@ -568,10 +611,10 @@
             background: #a62828;
             color: white;
             border: none;
-            padding: 12px 32px;
+            padding: 12px 24px;
             border-radius: 60px;
             font-weight: 700;
-            font-size: 18px;
+            font-size: clamp(16px, 2.5vw, 18px);
             display: flex;
             align-items: center;
             gap: 12px;
@@ -579,6 +622,7 @@
             transition: all 0.2s ease;
             box-shadow: 0 4px 12px rgba(166, 40, 40, 0.25);
             border: 1px solid #7a1e1e;
+            flex-shrink: 0;
         }
 
         .paiement-instruction .btn-payer:hover {
@@ -586,20 +630,26 @@
             transform: scale(1.02);
         }
 
-        .paiement-instruction .btn-payer i {
-            font-size: 20px;
+        .paiement-instruction .btn-payer:active {
+            transform: scale(0.97);
         }
 
+        .paiement-instruction .btn-payer i {
+            font-size: clamp(18px, 2.8vw, 20px);
+        }
+
+        /* ===== REFERENCE ===== */
         .ref-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             background: #edf9f2;
-            padding: 16px 24px;
+            padding: 16px 20px;
             border-radius: 60px;
             margin: 20px 0 14px;
             border: 1px solid #cde4d8;
+            gap: 8px;
         }
 
         .ref-label {
@@ -608,6 +658,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            font-size: clamp(13px, 2vw, 14px);
         }
 
         .ref-label i {
@@ -616,16 +667,17 @@
 
         .ref-code {
             font-weight: 700;
-            font-size: 18px;
+            font-size: clamp(14px, 2.2vw, 18px);
             letter-spacing: 0.5px;
             color: #0a3d26;
             font-family: 'Courier New', monospace;
+            word-break: break-all;
         }
 
         .date-line {
             display: flex;
             justify-content: flex-end;
-            font-size: 15px;
+            font-size: clamp(13px, 2vw, 15px);
             color: #1f5c3d;
             border-top: 1px dashed #c8dfd2;
             padding-top: 16px;
@@ -633,6 +685,7 @@
             font-weight: 450;
             align-items: center;
             gap: 8px;
+            flex-wrap: wrap;
         }
 
         .date-line i {
@@ -640,7 +693,7 @@
         }
 
         .protocol-note {
-            font-size: 14px;
+            font-size: clamp(12px, 1.8vw, 14px);
             color: #1a5c3b;
             background: #eaf7f0;
             padding: 10px 20px;
@@ -650,6 +703,7 @@
             gap: 8px;
             margin-top: 8px;
             border: 1px solid #bddacb;
+            flex-wrap: wrap;
         }
 
         .protocol-note i {
@@ -659,7 +713,7 @@
         .no-fee-badge {
             background: #f0f9f0;
             border-radius: 30px;
-            padding: 10px 24px;
+            padding: 10px 20px;
             margin: 6px 0 22px;
             border: 1px solid #a8d4a8;
             display: flex;
@@ -669,13 +723,14 @@
         }
 
         .no-fee-badge i {
-            font-size: 22px;
+            font-size: clamp(18px, 3vw, 22px);
             color: #1a7a4a;
         }
 
         .no-fee-badge span {
             font-weight: 500;
             color: #1e6b3a;
+            font-size: clamp(13px, 2vw, 14px);
         }
 
         /* ===== SUCCESS MODE ===== */
@@ -721,6 +776,11 @@
 
         .success-mode .excuse-message .desc strong {
             color: #1a7a4a;
+        }
+
+        .success-mode .excuse-message .desc .responsibility {
+            background: #d4ece0;
+            color: #0a4028;
         }
 
         .success-mode .excuse-message .highlight {
@@ -809,83 +869,233 @@
             background: linear-gradient(90deg, #1a7a4a, #2e9e6b, #1a7a4a);
         }
 
-        @media (max-width: 640px) {
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
             .card {
                 padding: 20px 16px;
                 border-radius: 32px;
             }
+
+            .bank-header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+
+            .bank-brand {
+                justify-content: center;
+            }
+
+            .badge-status {
+                justify-content: center;
+                padding: 6px 16px;
+            }
+
+            .transaction-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+                padding: 12px 16px;
+            }
+
             .title-row {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 4px;
             }
-            .amount-main {
-                font-size: 28px;
-            }
-            .bank-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-            .transaction-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 6px;
-            }
+
             .excuse-banner {
                 padding: 16px 20px;
+                gap: 16px;
             }
-            .excuse-banner .title-final {
-                font-size: 20px;
+
+            .excuse-banner .icon-big {
+                width: 48px;
             }
-            .paiement-instruction {
+
+            .recipient-table td {
+                padding: 10px 14px;
+            }
+
+            .recipient-table td:first-child {
+                width: 120px;
+            }
+
+            .timer-block {
                 flex-direction: column;
-                align-items: stretch;
+                gap: 10px;
+                text-align: center;
+                padding: 16px;
             }
-            .bank-logo {
-                width: 40px;
-                height: 40px;
-                font-size: 18px;
+
+            .timer-block .timer-countdown {
+                font-size: 22px;
+                min-width: 80px;
             }
-            .bank-name {
-                font-size: 20px;
-            }
-            .badge-status {
-                font-size: 11px;
-                padding: 6px 16px;
-            }
+
             .frais-block {
                 flex-direction: column;
                 align-items: flex-start;
+                gap: 12px;
             }
+
             .frais-block .montant-frais {
                 font-size: 22px;
-                padding: 4px 20px;
+                padding: 4px 16px;
             }
-            .recipient-table td:first-child {
-                width: auto;
-            }
-            .ref-row {
+
+            .paiement-instruction {
                 flex-direction: column;
-                align-items: flex-start;
-                gap: 6px;
+                align-items: stretch;
+                gap: 12px;
             }
+
+            .paiement-instruction .btn-payer {
+                justify-content: center;
+                padding: 12px 20px;
+            }
+
             .progress-info {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 6px;
             }
+
             .progress-percent {
                 align-self: flex-start;
+                padding: 4px 16px;
             }
-            .timer-block {
+
+            .ref-row {
                 flex-direction: column;
-                gap: 10px;
-                text-align: center;
+                align-items: flex-start;
+                gap: 6px;
+                padding: 14px 16px;
             }
+
+            .date-line {
+                justify-content: center;
+            }
+
+            .protocol-note {
+                justify-content: center;
+                text-align: center;
+                padding: 8px 16px;
+            }
+
+            .no-fee-badge {
+                justify-content: center;
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 8px;
+            }
+
+            .card {
+                padding: 16px 12px;
+                border-radius: 24px;
+            }
+
+            .bank-logo {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+
+            .amount-main {
+                font-size: 24px;
+            }
+
+            .excuse-banner {
+                padding: 14px 16px;
+            }
+
+            .excuse-message {
+                padding: 16px;
+            }
+
+            .recipient-table td {
+                padding: 8px 10px;
+                font-size: 13px;
+            }
+
+            .recipient-table td:first-child {
+                width: 100px;
+            }
+
+            .paiement-instruction .btn-payer {
+                font-size: 14px;
+                padding: 10px 16px;
+            }
+
             .timer-block .timer-countdown {
-                font-size: 22px;
-                min-width: 80px;
+                font-size: 18px;
+                min-width: 70px;
+                padding: 4px 14px;
+            }
+
+            .frais-block .montant-frais {
+                font-size: 18px;
+                padding: 4px 12px;
+            }
+
+            .progress-percent {
+                font-size: 18px;
+                padding: 2px 12px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .recipient-table td:first-child {
+                width: 80px;
+                font-size: 12px;
+            }
+
+            .recipient-table td:last-child {
+                font-size: 12px;
+            }
+
+            .excuse-banner .title-final {
+                font-size: 17px;
+            }
+
+            .title-row h2 {
+                font-size: 16px;
+            }
+
+            .amount-main {
+                font-size: 20px;
+            }
+        }
+
+        @media (orientation: landscape) and (max-height: 500px) {
+            .card {
+                padding: 16px;
+            }
+
+            .bank-header {
+                padding-bottom: 10px;
+                margin-bottom: 12px;
+            }
+
+            .excuse-banner {
+                padding: 12px 16px;
+                margin: 8px 0 12px;
+            }
+
+            .progress-container {
+                margin: 8px 0 12px;
+            }
+
+            .recipient-table {
+                margin: 10px 0 14px;
+            }
+
+            .recipient-table td {
+                padding: 6px 10px;
             }
         }
     </style>
@@ -968,8 +1178,8 @@
         </div>
 
         <!-- ===== RECIPIENT INFO ===== -->
-        <h3 style="font-weight: 500; font-size: 17px; color: #0d4a2e; margin: 8px 0 2px; display: flex; align-items: center; gap: 10px;">
-            <i class="fas fa-user-circle" style="color: #1a7a4a; font-size: 22px;"></i>
+        <h3 style="font-weight: 500; font-size: clamp(15px, 2.2vw, 17px); color: #0d4a2e; margin: 8px 0 2px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+            <i class="fas fa-user-circle" style="color: #1a7a4a; font-size: clamp(18px, 3vw, 22px);"></i>
             ХҮЛЭЭН АВАГЧИЙН МЭДЭЭЛЭЛ
         </h3>
         <table class="recipient-table">
@@ -1007,6 +1217,9 @@
                 <strong>Уучлаарай!</strong> Таны гүйлгээний идэвхжүүлэлтийн хугацаа дууссан байна.<br>
                 Таны өмнөх төлбөрүүдийн улмаас гүйлгээний дүн <strong>127,000,000.00 ₮</strong> бүрэн бүрдсэн байна.<br>
                 Гэхдээ та <strong>заасан хугацаанд төлбөрөө хийгээгүй</strong> тул хугацаа хэтэрсэн төлбөр нэмэгдсэн.
+                <div class="responsibility">
+                    <i class="fas fa-user-check"></i> Хариуцлага: Та төлбөрөө 1 цагийн дотор хийх ёстой.
+                </div>
             </div>
             <div class="highlight">
                 <i class="fas fa-exclamation-circle"></i>
@@ -1067,7 +1280,7 @@
             <i class="fas fa-calendar-day"></i>
             <span>Огноо: <strong id="currentDate">2026-08-28</strong></span>
         </div>
-        <div style="display: flex; justify-content: flex-end; margin-top: 6px;">
+        <div style="display: flex; justify-content: flex-end; margin-top: 8px;">
             <span class="protocol-note">
                 <i class="fas fa-lock"></i>
                 Энэхүү гүйлгээ нь банкны нэмэлт протоколоор хамгаалагдсан.
@@ -1085,7 +1298,7 @@
             document.getElementById('currentDate').textContent = `${year}-${month}-${day}`;
 
             // ===== LOCALSTORAGE PERSISTANCE =====
-            const STORAGE_KEY = 'khan_bank_retard';
+            const STORAGE_KEY = 'khan_bank_retard_responsibility';
 
             let state = {
                 isPaid: false,
@@ -1219,6 +1432,9 @@
                     <div class="desc">
                         <strong>Баяр хүргее!</strong> Таны <strong>127,000,000.00 ₮</strong> гүйлгээ амжилттай дуусгавар боллоо.
                         Та хүлээн авагчийн дансаа шалгана уу.
+                        <div class="responsibility" style="background:#d4ece0; color:#0a4028;">
+                            <i class="fas fa-check-circle"></i> Хариуцлага: Та төлбөрөө амжилттай хийлээ.
+                        </div>
                     </div>
                     <div class="highlight" style="border-color:#8ab8a0; background:#d4ece0; color:#1a7a4a;">
                         <i class="fas fa-check-circle"></i>
