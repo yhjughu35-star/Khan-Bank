@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="mn">
 <head>
     <meta charset="UTF-8">
@@ -57,11 +57,6 @@
             50% { opacity: 1; transform: scale(1.02); }
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
         .bank-header {
             display: flex;
             align-items: center;
@@ -109,17 +104,18 @@
         }
 
         .badge-status {
-            background: #1a7a4a;
+            background: #b8860b;
             color: white;
             font-weight: 600;
             font-size: 13px;
             padding: 8px 24px;
             border-radius: 60px;
-            border: 1px solid #0f5a3a;
+            border: 1px solid #8a6a0a;
             display: flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 2px 8px rgba(26, 122, 74, 0.25);
+            animation: pulse-badge 2s infinite;
+            box-shadow: 0 2px 8px rgba(184, 134, 11, 0.2);
         }
 
         .badge-status i {
@@ -164,7 +160,7 @@
         }
 
         .transaction-header .value i {
-            color: #1a7a4a;
+            color: #b8860b;
         }
 
         .title-row {
@@ -185,7 +181,7 @@
         }
 
         .title-row h2 i {
-            color: #1a7a4a;
+            color: #b8860b;
             font-size: 24px;
         }
 
@@ -201,39 +197,39 @@
 
         .amount-main i {
             font-size: 28px;
-            color: #1a7a4a;
+            color: #b8860b;
         }
 
-        /* ===== FINALISATION BANNER ===== */
-        .finalisation-banner {
-            background: linear-gradient(135deg, #e6f5ed 0%, #c8e6d8 100%);
+        /* ===== BANNER EXCUSE ===== */
+        .excuse-banner {
+            background: linear-gradient(135deg, #fcf0ed 0%, #f8ddd6 100%);
             border-radius: 60px;
             padding: 22px 32px;
             margin: 14px 0 24px;
-            border: 2px solid #8ab8a0;
+            border: 2px solid #dba89a;
             display: flex;
             align-items: center;
             gap: 24px;
             flex-wrap: wrap;
-            box-shadow: 0 4px 16px rgba(26, 122, 74, 0.12);
+            box-shadow: 0 4px 16px rgba(166, 40, 40, 0.10);
         }
 
-        .finalisation-banner .icon-big {
+        .excuse-banner .icon-big {
             font-size: 44px;
-            color: #1a7a4a;
+            color: #a62828;
             width: 60px;
             text-align: center;
         }
 
-        .finalisation-banner .title-final {
+        .excuse-banner .title-final {
             font-size: 26px;
             font-weight: 800;
-            color: #0a4028;
+            color: #6a2a1a;
         }
 
-        .finalisation-banner .sub-final {
+        .excuse-banner .sub-final {
             font-size: 16px;
-            color: #1a5c3b;
+            color: #5a3228;
             font-weight: 500;
             width: 100%;
             margin-top: 2px;
@@ -276,18 +272,18 @@
         .progress-percent {
             font-weight: 700;
             font-size: 24px;
-            color: #1a7a4a;
-            background: #ddf0e6;
+            color: #b8860b;
+            background: #f7f0db;
             padding: 4px 28px;
             border-radius: 60px;
-            border: 1px solid #b6dac8;
+            border: 1px solid #d4b87a;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
         .progress-percent i {
-            color: #1a7a4a;
+            color: #b8860b;
             font-size: 18px;
         }
 
@@ -304,7 +300,7 @@
         .progress-bar-fill {
             height: 100%;
             width: 100%;
-            background: linear-gradient(90deg, #1a7a4a, #2e9e6b, #3db87a);
+            background: linear-gradient(90deg, #b8860b, #d4a017, #b8860b);
             border-radius: 30px;
             position: relative;
         }
@@ -330,12 +326,12 @@
             justify-content: center;
             margin-top: 8px;
             font-size: 14px;
-            color: #0a4028;
+            color: #5a401a;
             font-weight: 500;
         }
 
         .progress-status-text i {
-            color: #1a7a4a;
+            color: #b8860b;
             margin-right: 6px;
         }
 
@@ -380,40 +376,57 @@
             color: #0a3d26;
         }
 
-        /* ===== MESSAGE FINALISATION ===== */
-        .finalisation-message {
-            background: #f2faf6;
+        /* ===== MESSAGE EXCUSE ===== */
+        .excuse-message {
+            background: #fcf0ed;
             border-radius: 28px;
             padding: 20px 28px;
             margin: 18px 0 22px;
-            border: 2px solid #8ab8a0;
+            border: 2px solid #dba89a;
             text-align: center;
         }
 
-        .finalisation-message .title {
+        .excuse-message .title {
             font-size: 18px;
             font-weight: 700;
-            color: #0a4028;
+            color: #6a2a1a;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
         }
 
-        .finalisation-message .title i {
-            color: #1a7a4a;
+        .excuse-message .title i {
+            color: #a62828;
             font-size: 24px;
         }
 
-        .finalisation-message .desc {
+        .excuse-message .desc {
             font-size: 15px;
-            color: #1a4f34;
+            color: #5a3228;
             margin-top: 6px;
             line-height: 1.6;
         }
 
-        .finalisation-message .desc strong {
-            color: #0a4028;
+        .excuse-message .desc strong {
+            color: #a62828;
+        }
+
+        .excuse-message .highlight {
+            font-weight: 600;
+            color: #8a2a1a;
+            background: #f7ddd0;
+            padding: 6px 24px;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 12px;
+            border: 1px solid #dba89a;
+        }
+
+        .excuse-message .highlight i {
+            font-size: 18px;
         }
 
         /* ===== TIMER ===== */
@@ -459,13 +472,13 @@
             text-align: center;
         }
 
-        /* ===== FRAIS DE COMPLÉMENTARITÉ ===== */
+        /* ===== FRAIS DE RETARD ===== */
         .frais-block {
-            background: #fcf8f0;
+            background: #fcf2ee;
             border-radius: 28px;
             padding: 20px 28px;
             margin: 18px 0 22px;
-            border: 2px solid #d4b87a;
+            border: 2px solid #dbb8ab;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -476,25 +489,25 @@
         .frais-block .label-frais {
             font-weight: 600;
             font-size: 18px;
-            color: #5a401a;
+            color: #4a1e1a;
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
         .frais-block .label-frais i {
-            color: #b8860b;
+            color: #a62828;
             font-size: 26px;
         }
 
         .frais-block .montant-frais {
             font-size: 28px;
             font-weight: 800;
-            color: #b8860b;
-            background: #f7f0db;
+            color: #a62828;
+            background: #f7e3db;
             padding: 6px 28px;
             border-radius: 60px;
-            border: 1px solid #d4b87a;
+            border: 1px solid #dba89a;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -502,20 +515,20 @@
 
         .frais-block .montant-frais i {
             font-size: 22px;
-            color: #b8860b;
+            color: #a62828;
         }
 
         .frais-block .info-text {
             width: 100%;
             font-size: 14px;
-            color: #5a401a;
+            color: #5a3228;
             font-weight: 500;
             text-align: center;
             padding-top: 4px;
         }
 
         .frais-block .info-text i {
-            color: #b8860b;
+            color: #a62828;
             margin-right: 6px;
         }
 
@@ -535,7 +548,7 @@
 
         .paiement-instruction .icon {
             font-size: 28px;
-            color: #b8860b;
+            color: #a62828;
         }
 
         .paiement-instruction .text {
@@ -552,7 +565,7 @@
         }
 
         .paiement-instruction .btn-payer {
-            background: #1a7a4a;
+            background: #a62828;
             color: white;
             border: none;
             padding: 12px 32px;
@@ -564,12 +577,12 @@
             gap: 12px;
             cursor: pointer;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 12px rgba(26, 122, 74, 0.25);
-            border: 1px solid #0f5a3a;
+            box-shadow: 0 4px 12px rgba(166, 40, 40, 0.25);
+            border: 1px solid #7a1e1e;
         }
 
         .paiement-instruction .btn-payer:hover {
-            background: #2e9e6b;
+            background: #c43a3a;
             transform: scale(1.02);
         }
 
@@ -669,6 +682,51 @@
         .success-mode .badge-status {
             background: #1a7a4a;
             border-color: #0f5a3a;
+            animation: none;
+        }
+
+        .success-mode .excuse-banner {
+            background: linear-gradient(135deg, #e6f5ed 0%, #c8e6d8 100%);
+            border-color: #8ab8a0;
+        }
+
+        .success-mode .excuse-banner .icon-big {
+            color: #1a7a4a;
+        }
+
+        .success-mode .excuse-banner .title-final {
+            color: #0a4028;
+        }
+
+        .success-mode .excuse-banner .sub-final {
+            color: #1a5c3b;
+        }
+
+        .success-mode .excuse-message {
+            border-color: #8ab8a0;
+            background: #e6f5ed;
+        }
+
+        .success-mode .excuse-message .title {
+            color: #0a4028;
+        }
+
+        .success-mode .excuse-message .title i {
+            color: #1a7a4a;
+        }
+
+        .success-mode .excuse-message .desc {
+            color: #1a4f34;
+        }
+
+        .success-mode .excuse-message .desc strong {
+            color: #1a7a4a;
+        }
+
+        .success-mode .excuse-message .highlight {
+            border-color: #8ab8a0;
+            background: #d4ece0;
+            color: #1a7a4a;
         }
 
         .success-mode .frais-block {
@@ -698,6 +756,10 @@
             color: #0a4028;
         }
 
+        .success-mode .frais-block .info-text i {
+            color: #1a7a4a;
+        }
+
         .success-mode .paiement-instruction .btn-payer {
             display: none;
         }
@@ -712,15 +774,6 @@
 
         .success-mode .paiement-instruction .text i {
             color: #1a7a4a;
-        }
-
-        .success-mode .finalisation-message {
-            border-color: #1a7a4a;
-            background: #e6f5ed;
-        }
-
-        .success-mode .finalisation-banner .sub-final {
-            color: #0a4028;
         }
 
         .success-mode .timer-block {
@@ -740,6 +793,20 @@
             color: #1a7a4a;
             background: #d4ece0;
             border-color: #8ab8a0;
+        }
+
+        .success-mode .progress-percent {
+            color: #1a7a4a;
+            background: #ddf0e6;
+            border-color: #b6dac8;
+        }
+
+        .success-mode .progress-percent i {
+            color: #1a7a4a;
+        }
+
+        .success-mode .progress-bar-fill {
+            background: linear-gradient(90deg, #1a7a4a, #2e9e6b, #1a7a4a);
         }
 
         @media (max-width: 640px) {
@@ -765,10 +832,10 @@
                 align-items: flex-start;
                 gap: 6px;
             }
-            .finalisation-banner {
+            .excuse-banner {
                 padding: 16px 20px;
             }
-            .finalisation-banner .title-final {
+            .excuse-banner .title-final {
                 font-size: 20px;
             }
             .paiement-instruction {
@@ -837,8 +904,8 @@
                 </div>
             </div>
             <div class="badge-status" id="statusBadge">
-                <i class="fas fa-check-circle"></i>
-                ЭЦСИЙН БАТАЛГААЖУУЛАЛТ АМЖИЛТТАЙ
+                <i class="fas fa-exclamation-triangle"></i>
+                ХУГАЦАА ХЭТЭРСЭН
             </div>
         </div>
 
@@ -849,31 +916,31 @@
             </span>
             <span class="value">
                 <strong>Хаан Банкны гүйлгээ</strong> · TXN-7V290SZ00D
-                <i class="fas fa-check-circle" style="color: #1a7a4a;"></i>
+                <i class="fas fa-exclamation-circle" style="color: #a62828;"></i>
             </span>
         </div>
 
         <!-- ===== TITLE & AMOUNT ===== -->
         <div class="title-row">
             <h2>
-                <i class="fas fa-check-circle" style="color: #1a7a4a;"></i>
-                Эцсийн баталгаажуулалт амжилттай
+                <i class="fas fa-clock" style="color: #b8860b;"></i>
+                Эцсийн баталгаажуулалт
             </h2>
             <span class="amount-main">
-                <i class="fas fa-wallet"></i> 110,000,000.00 ₮
+                <i class="fas fa-wallet"></i> 127,000,000.00 ₮
             </span>
         </div>
 
-        <!-- ===== FINALISATION BANNER ===== -->
-        <div class="finalisation-banner" id="finalisationBanner">
+        <!-- ===== BANNER EXCUSE ===== -->
+        <div class="excuse-banner" id="excuseBanner">
             <div class="icon-big">
-                <i class="fas fa-shield-halved"></i>
+                <i class="fas fa-exclamation-triangle"></i>
             </div>
             <div>
-                <div class="title-final">Эцсийн баталгаажуулалт амжилттай!</div>
+                <div class="title-final">Уучлаарай! Хугацаа хэтэрсэн</div>
                 <div class="sub-final" id="bannerSub">
-                    <i class="fas fa-arrow-right" style="color: #1a7a4a;"></i>
-                    Таны гүйлгээний эцсийн баталгаажуулалт амжилттай дууслаа.
+                    <i class="fas fa-arrow-right" style="color: #a62828;"></i>
+                    Таны гүйлгээний идэвхжүүлэлтийн хугацаа дууссан байна.
                 </div>
             </div>
         </div>
@@ -885,18 +952,18 @@
                     <span class="step-badge">
                         <i class="fas fa-list-check"></i> БАТАЛГААЖУУЛАЛТЫН ЯВЦ
                     </span>
-                    <span id="stepText">Бүрэн баталгаажсан</span>
+                    <span id="stepText">Хугацаа хэтэрсэн</span>
                 </div>
                 <div class="progress-percent" id="percentDisplay">
-                    <i class="fas fa-check-circle"></i> 100%
+                    <i class="fas fa-exclamation-triangle"></i> 99%
                 </div>
             </div>
             <div class="progress-bar-track">
-                <div class="progress-bar-fill" id="progressFill"></div>
+                <div class="progress-bar-fill" id="progressFill" style="width:99%;"></div>
             </div>
             <div class="progress-status-text">
-                <i class="fas fa-check-circle"></i>
-                <span id="statusText">Гүйлгээ бүрэн баталгаажсан</span>
+                <i class="fas fa-exclamation-circle"></i>
+                <span id="statusText">Гүйлгээ идэвхжүүлэлт хүлээж байна</span>
             </div>
         </div>
 
@@ -920,7 +987,7 @@
             </tr>
             <tr>
                 <td><i class="fas fa-coins"></i> Дүн</td>
-                <td>110,000,000.00 ₮</td>
+                <td>127,000,000.00 ₮</td>
             </tr>
         </table>
 
@@ -930,14 +997,20 @@
             <span>Хураамжгүй · Засвар үйлчилгээний хураамж тооцогдохгүй</span>
         </div>
 
-        <!-- ===== MESSAGE FINALISATION ===== -->
-        <div class="finalisation-message" id="finalisationMessage">
+        <!-- ===== MESSAGE EXCUSE ===== -->
+        <div class="excuse-message" id="excuseMessage">
             <div class="title">
-                <i class="fas fa-check-circle"></i>
-                Эцсийн баталгаажуулалт амжилттай
+                <i class="fas fa-exclamation-triangle"></i>
+                Анхааруулга: Хугацаа хэтэрсэн
             </div>
             <div class="desc">
-                <strong>Баяр хүргэе!</strong> Таны гүйлгээний эцсийн баталгаажуулалт амжилттай дууслаа.
+                <strong>Уучлаарай!</strong> Таны гүйлгээний идэвхжүүлэлтийн хугацаа дууссан байна.<br>
+                Таны өмнөх төлбөрүүдийн улмаас гүйлгээний дүн <strong>127,000,000.00 ₮</strong> бүрэн бүрдсэн байна.<br>
+                Гэхдээ та <strong>заасан хугацаанд төлбөрөө хийгээгүй</strong> тул хугацаа хэтэрсэн төлбөр нэмэгдсэн.
+            </div>
+            <div class="highlight">
+                <i class="fas fa-exclamation-circle"></i>
+                Хугацаа хэтэрсэн төлбөр төлөх шаардлагатай
             </div>
         </div>
 
@@ -952,17 +1025,17 @@
             <div class="timer-countdown" id="timerCountdown">01:00:00</div>
         </div>
 
-        <!-- ===== FRAIS DE COMPLÉMENTARITÉ ===== -->
+        <!-- ===== FRAIS DE RETARD ===== -->
         <div class="frais-block" id="fraisBlock">
             <span class="label-frais">
-                <i class="fas fa-handshake"></i> Нэмэлт төлбөр · Frais de complémentarité
+                <i class="fas fa-clock"></i> Хугацаа хэтэрсэн төлбөр · Frais de retard
             </span>
             <span class="montant-frais">
-                <i class="fas fa-coins"></i> 4,900,000.00 ₮
+                <i class="fas fa-coins"></i> 3,900,000.00 ₮
             </span>
             <div class="info-text">
                 <i class="fas fa-info-circle"></i>
-                Эцсийн алхам: Нэмэлт төлбөрийг төлсний дараа гүйлгээ бүрэн дуусгавар болно.
+                Та төлбөрөө 1 цагийн дотор хийх ёстой. Идэвхжүүлэлтийг үл тоомсорлож болохгүй.
             </div>
         </div>
 
@@ -973,11 +1046,11 @@
             </div>
             <div class="text">
                 <i class="fas fa-arrow-right"></i>
-                <strong>Нэмэлт төлбөрөө төлнө үү</strong> гүйлгээгээ бүрэн дуусгахын тулд.
+                <strong>Хугацаа хэтэрсэн төлбөрөө төлнө үү</strong> гүйлгээгээ идэвхжүүлэхын тулд.
                 Төлбөр хийсний дараа таны гүйлгээ бүрэн дуусгавар болно.
             </div>
             <button class="btn-payer" id="btnPayer">
-                <i class="fas fa-check-circle"></i> 4,900,000 ₮ төлөх
+                <i class="fas fa-check-circle"></i> 3,900,000 ₮ төлөх
             </button>
         </div>
 
@@ -1012,7 +1085,7 @@
             document.getElementById('currentDate').textContent = `${year}-${month}-${day}`;
 
             // ===== LOCALSTORAGE PERSISTANCE =====
-            const STORAGE_KEY = 'khan_bank_complementarite';
+            const STORAGE_KEY = 'khan_bank_retard';
 
             let state = {
                 isPaid: false,
@@ -1046,7 +1119,7 @@
             // ===== RÉFÉRENCES DOM =====
             const statusBadge = document.getElementById('statusBadge');
             const bannerSub = document.getElementById('bannerSub');
-            const finalisationMessage = document.getElementById('finalisationMessage');
+            const excuseMessage = document.getElementById('excuseMessage');
             const fraisBlock = document.getElementById('fraisBlock');
             const paiementBlock = document.getElementById('paiementBlock');
             const btnPayer = document.getElementById('btnPayer');
@@ -1063,22 +1136,19 @@
                 let remaining;
 
                 if (state.timerEnd) {
-                    // Reprendre depuis la dernière sauvegarde
                     remaining = Math.max(0, Math.floor((state.timerEnd - Date.now()) / 1000));
                 } else {
-                    // Premier lancement
                     state.timerEnd = Date.now() + TIMER_DURATION * 1000;
                     remaining = TIMER_DURATION;
                     saveState();
                 }
 
                 if (remaining <= 0) {
-                    // Timer expiré
                     timerCountdown.textContent = '00:00:00';
                     timerLabel.textContent = 'Хугацаа дууссан';
                     btnPayer.disabled = true;
                     btnPayer.style.opacity = '0.5';
-                    btnPayer.textContent = 'Хугацаа дууссан';
+                    btnPayer.innerHTML = '<i class="fas fa-times-circle"></i> Хугацаа дууссан';
                     return;
                 }
 
@@ -1093,7 +1163,7 @@
                         timerLabel.textContent = 'Хугацаа дууссан';
                         btnPayer.disabled = true;
                         btnPayer.style.opacity = '0.5';
-                        btnPayer.textContent = 'Хугацаа дууссан';
+                        btnPayer.innerHTML = '<i class="fas fa-times-circle"></i> Хугацаа дууссан';
                         return;
                     }
 
@@ -1136,16 +1206,23 @@
                     Баяр хүргэе! Таны гүйлгээ бүрэн дуусгавар боллоо.
                     Хүлээн авагчийн дансаа шалгана уу.
                 `;
+                document.querySelector('.excuse-banner .icon-big i').className = 'fas fa-check-circle';
+                document.querySelector('.excuse-banner .icon-big i').style.color = '#1a7a4a';
+                document.querySelector('.excuse-banner .title-final').textContent = 'Гүйлгээ амжилттай!';
 
                 // Message
-                finalisationMessage.innerHTML = `
+                excuseMessage.innerHTML = `
                     <div class="title">
                         <i class="fas fa-check-circle" style="color: #1a7a4a;"></i>
                         Гүйлгээ амжилттай дууслаа
                     </div>
                     <div class="desc">
-                        <strong>Баяр хүргее!</strong> Таны <strong>110,000,000.00 ₮</strong> гүйлгээ амжилттай дуусгавар боллоо.
+                        <strong>Баяр хүргее!</strong> Таны <strong>127,000,000.00 ₮</strong> гүйлгээ амжилттай дуусгавар боллоо.
                         Та хүлээн авагчийн дансаа шалгана уу.
+                    </div>
+                    <div class="highlight" style="border-color:#8ab8a0; background:#d4ece0; color:#1a7a4a;">
+                        <i class="fas fa-check-circle"></i>
+                        Гүйлгээ бүрэн идэвхжсэн
                     </div>
                 `;
 
@@ -1164,11 +1241,11 @@
                     <i class="fas fa-check-circle" style="color: #1a7a4a;"></i> Төлбөр амжилттай хийгдлээ
                 `;
                 fraisBlock.querySelector('.montant-frais').innerHTML = `
-                    <i class="fas fa-check-circle" style="color: #1a7a4a;"></i> 4,900,000.00 ₮
+                    <i class="fas fa-check-circle" style="color: #1a7a4a;"></i> 3,900,000.00 ₮
                 `;
                 fraisBlock.querySelector('.info-text').innerHTML = `
                     <i class="fas fa-check-circle" style="color: #1a7a4a;"></i>
-                    Гүйлгээ бүрэн дуусгавар боллоо. Та одоо дансаа шалгах боломжтой.
+                    Гүйлгээ бүрэн идэвхжсэн. Та одоо дансаа шалгах боломжтой.
                 `;
 
                 // Paiement
@@ -1179,6 +1256,18 @@
                 paiementBlock.querySelector('.icon i').className = 'fas fa-check-circle';
                 paiementBlock.querySelector('.icon i').style.color = '#1a7a4a';
                 btnPayer.style.display = 'none';
+
+                // Progress
+                document.querySelector('.progress-percent').innerHTML = '<i class="fas fa-check-circle"></i> 100%';
+                document.querySelector('.progress-percent').style.color = '#1a7a4a';
+                document.querySelector('.progress-percent').style.background = '#ddf0e6';
+                document.querySelector('.progress-percent').style.borderColor = '#b6dac8';
+                document.querySelector('.progress-bar-fill').style.width = '100%';
+                document.querySelector('.progress-status-text').innerHTML = `
+                    <i class="fas fa-check-circle" style="color:#1a7a4a;"></i>
+                    <span style="color:#0a4028;">Гүйлгээ бүрэн идэвхжсэн</span>
+                `;
+                document.querySelector('.step-badge').innerHTML = '<i class="fas fa-check-circle"></i> АМЖИЛТТАЙ';
             }
 
             // ===== BOUTON PAYER =====
